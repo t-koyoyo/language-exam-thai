@@ -1,0 +1,382 @@
+<header>
+  <div id="header">
+    <div id="header_center">
+      <div id="header_center_left">
+        <p>実用タイ語検定 試験情報＆模擬試験</p>
+        <%= link_to("/") do %><%= image_tag "logo.png" %><%end%><span>実用</span>
+          <div class="dropdown">
+            <div class="select">
+              <span>タイ語</span>
+              <i class="fa fa-chevron-left"></i>
+            </div>
+            <input type="hidden" name="gender">
+            <ul class="dropdown-menu">
+              <li id="english">英語</li>
+              <li id="china">中国語</li>
+              <li id="japan">日本語</li>
+            </ul>
+          </div>
+        <span>検定試験合格.com</span>
+      </div>
+      <div id="header_center_right">
+        <div>
+          <p>次回試験日は、<b>2020年6月7日(日)</b></p>
+          <p>開催まであと<b>77</b>日!!</p>
+          <!--<p><a href="http://www.thaigokentei.com/howto/" target="_blank" rel="noopener">出願受付開始まであと<b>70</b>日!!</a></p>-->
+          <!--<p><a href="http://www.thaigokentei.com/howto/" target="_blank" rel="noopener">出願受付中!!</a></p>-->
+          <p><a href="http://www.thaigokentei.com/howto/" target="_blank" rel="noopener">出願受付終了!!</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- uikit.ヘッダーメニュー(Head[1]) -->
+  <div id="header_menu">
+    <button class="uk-button uk-button-default" type="button">実用タイ語検定とは</button>
+    <button class="uk-button uk-button-default" type="button">過去問題解説</button>
+    <button class="uk-button uk-button-default" type="button">過去問題道場</button>
+    <div class="uk-width-large" uk-dropdown>
+        <div class="uk-dropdown-grid uk-child-width-1-2@m" uk-grid>
+            <div>
+                <ul class="uk-nav uk-dropdown-nav">
+                    <li class="uk-nav-header">５級</li>
+                    <li class="uk-nav-divider"></li>
+                    <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+                        <li class="uk-parent">
+                            <a href="#">2020年度〜</a>
+                            <ul class="uk-nav-sub">
+                                <li><a href="#">2020年度 春季</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+                        <li class="uk-parent">
+                            <a href="#">2015〜2019年度</a>
+                            <ul class="uk-nav-sub">
+                                <li><a href="#">2019年度 秋季</a></li>
+                                <li><a href="#">2019年度 春季</a></li>
+                                <li><a href="#">2018年度 秋季</a></li>
+                                <li><a href="#">2018年度 春季</a></li>
+                                <li><a href="#">2017年度 秋季</a></li>
+                                <li><a href="#">2017年度 春季</a></li>
+                                <li><a href="#">2016年度 秋季</a></li>
+                                <li><a href="#">2016年度 春季</a></li>
+                                <li><a href="#">2015年度 秋季</a></li>
+                                <li><a href="#">2015年度 春季</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+                        <li class="uk-parent">
+                            <a href="#">2010〜2014年度</a>
+                            <ul class="uk-nav-sub">
+                                <li><a href="#">2014年度 秋季</a></li>
+                                <li><a href="#">2014年度 春季</a></li>
+                                <li><a href="#">2013年度 秋季</a></li>
+                                <li><a href="#">2013年度 春季</a></li>
+                                <li><a href="#">2012年度 秋季</a></li>
+                                <li><a href="#">2012年度 春季</a></li>
+                                <li><a href="#">2011年度 秋季</a></li>
+                                <li><a href="#">2011年度 春季</a></li>
+                                <li><a href="#">2010年度 秋季</a></li>
+                                <li><a href="#">2010年度 春季</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </ul>
+            </div>
+            <div>
+                <ul class="uk-nav uk-dropdown-nav">
+                    <li class="uk-nav-header">４級</li>
+                    <li class="uk-nav-divider"></li>
+                    <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+                        <li class="uk-parent">
+                            <a href="#">2020年度〜</a>
+                            <ul class="uk-nav-sub">
+                                <li><a href="#">2020年度 春季</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+                        <li class="uk-parent">
+                            <a href="#">2015〜2019年度</a>
+                            <ul class="uk-nav-sub">
+                                <li><a href="#">2019年度 秋季</a></li>
+                                <li><a href="#">2019年度 春季</a></li>
+                                <li><a href="#">2018年度 秋季</a></li>
+                                <li><a href="#">2018年度 春季</a></li>
+                                <li><a href="#">2017年度 秋季</a></li>
+                                <li><a href="#">2017年度 春季</a></li>
+                                <li><a href="#">2016年度 秋季</a></li>
+                                <li><a href="#">2016年度 春季</a></li>
+                                <li><a href="#">2015年度 秋季</a></li>
+                                <li><a href="#">2015年度 春季</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+                        <li class="uk-parent">
+                            <a href="#">2010〜2014年度</a>
+                            <ul class="uk-nav-sub">
+                                <li><a href="#">2014年度 秋季</a></li>
+                                <li><a href="#">2014年度 春季</a></li>
+                                <li><a href="#">2013年度 秋季</a></li>
+                                <li><a href="#">2013年度 春季</a></li>
+                                <li><a href="#">2012年度 秋季</a></li>
+                                <li><a href="#">2012年度 春季</a></li>
+                                <li><a href="#">2011年度 秋季</a></li>
+                                <li><a href="#">2011年度 春季</a></li>
+                                <li><a href="#">2010年度 秋季</a></li>
+                                <li><a href="#">2010年度 春季</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </ul>
+            </div>
+            <div>
+                <ul class="uk-nav uk-dropdown-nav">
+                    <li class="uk-nav-header">３級</li>
+                    <li class="uk-nav-divider"></li>
+                    <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+                        <li class="uk-parent">
+                            <a href="#">2020年度〜</a>
+                            <ul class="uk-nav-sub">
+                                <li><a href="#">2020年度 春季</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+                        <li class="uk-parent">
+                            <a href="#">2015〜2019年度</a>
+                            <ul class="uk-nav-sub">
+                                <li><a href="#">2019年度 秋季</a></li>
+                                <li><a href="#">2019年度 春季</a></li>
+                                <li><a href="#">2018年度 秋季</a></li>
+                                <li><a href="#">2018年度 春季</a></li>
+                                <li><a href="#">2017年度 秋季</a></li>
+                                <li><a href="#">2017年度 春季</a></li>
+                                <li><a href="#">2016年度 秋季</a></li>
+                                <li><a href="#">2016年度 春季</a></li>
+                                <li><a href="#">2015年度 秋季</a></li>
+                                <li><a href="#">2015年度 春季</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+                        <li class="uk-parent">
+                            <a href="#">2010〜2014年度</a>
+                            <ul class="uk-nav-sub">
+                                <li><a href="#">2014年度 秋季</a></li>
+                                <li><a href="#">2014年度 春季</a></li>
+                                <li><a href="#">2013年度 秋季</a></li>
+                                <li><a href="#">2013年度 春季</a></li>
+                                <li><a href="#">2012年度 秋季</a></li>
+                                <li><a href="#">2012年度 春季</a></li>
+                                <li><a href="#">2011年度 秋季</a></li>
+                                <li><a href="#">2011年度 春季</a></li>
+                                <li><a href="#">2010年度 秋季</a></li>
+                                <li><a href="#">2010年度 春季</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </ul>
+            </div>
+            <div>
+                <ul class="uk-nav uk-dropdown-nav">
+                    <li class="uk-nav-header">準２級</li>
+                    <li class="uk-nav-divider"></li>
+                    <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+                        <li class="uk-parent">
+                            <a href="#">2020年度〜</a>
+                            <ul class="uk-nav-sub">
+                                <li><a href="#">2020年度 春季</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+                        <li class="uk-parent">
+                            <a href="#">2015〜2019年度</a>
+                            <ul class="uk-nav-sub">
+                                <li><a href="#">2019年度 秋季</a></li>
+                                <li><a href="#">2019年度 春季</a></li>
+                                <li><a href="#">2018年度 秋季</a></li>
+                                <li><a href="#">2018年度 春季</a></li>
+                                <li><a href="#">2017年度 秋季</a></li>
+                                <li><a href="#">2017年度 春季</a></li>
+                                <li><a href="#">2016年度 秋季</a></li>
+                                <li><a href="#">2016年度 春季</a></li>
+                                <li><a href="#">2015年度 秋季</a></li>
+                                <li><a href="#">2015年度 春季</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+                        <li class="uk-parent">
+                            <a href="#">2010〜2014年度</a>
+                            <ul class="uk-nav-sub">
+                                <li><a href="#">2014年度 秋季</a></li>
+                                <li><a href="#">2014年度 春季</a></li>
+                                <li><a href="#">2013年度 秋季</a></li>
+                                <li><a href="#">2013年度 春季</a></li>
+                                <li><a href="#">2012年度 秋季</a></li>
+                                <li><a href="#">2012年度 春季</a></li>
+                                <li><a href="#">2011年度 秋季</a></li>
+                                <li><a href="#">2011年度 春季</a></li>
+                                <li><a href="#">2010年度 秋季</a></li>
+                                <li><a href="#">2010年度 春季</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </ul>
+            </div>
+            <div>
+                <ul class="uk-nav uk-dropdown-nav">
+                    <li class="uk-nav-header">２級</li>
+                    <li class="uk-nav-divider"></li>
+                    <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+                        <li class="uk-parent">
+                            <a href="#">2020年度〜</a>
+                            <ul class="uk-nav-sub">
+                                <li><a href="#">2020年度 春季</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+                        <li class="uk-parent">
+                            <a href="#">2015〜2019年度</a>
+                            <ul class="uk-nav-sub">
+                                <li><a href="#">2019年度 秋季</a></li>
+                                <li><a href="#">2019年度 春季</a></li>
+                                <li><a href="#">2018年度 秋季</a></li>
+                                <li><a href="#">2018年度 春季</a></li>
+                                <li><a href="#">2017年度 秋季</a></li>
+                                <li><a href="#">2017年度 春季</a></li>
+                                <li><a href="#">2016年度 秋季</a></li>
+                                <li><a href="#">2016年度 春季</a></li>
+                                <li><a href="#">2015年度 秋季</a></li>
+                                <li><a href="#">2015年度 春季</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+                        <li class="uk-parent">
+                            <a href="#">2010〜2014年度</a>
+                            <ul class="uk-nav-sub">
+                                <li><a href="#">2014年度 秋季</a></li>
+                                <li><a href="#">2014年度 春季</a></li>
+                                <li><a href="#">2013年度 秋季</a></li>
+                                <li><a href="#">2013年度 春季</a></li>
+                                <li><a href="#">2012年度 秋季</a></li>
+                                <li><a href="#">2012年度 春季</a></li>
+                                <li><a href="#">2011年度 秋季</a></li>
+                                <li><a href="#">2011年度 春季</a></li>
+                                <li><a href="#">2010年度 秋季</a></li>
+                                <li><a href="#">2010年度 春季</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </ul>
+            </div>
+            <div>
+                <ul class="uk-nav uk-dropdown-nav">
+                    <li class="uk-nav-header">１級</li>
+                    <li class="uk-nav-divider"></li>
+                    <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+                        <li class="uk-parent">
+                            <a href="#">2020年度〜</a>
+                            <ul class="uk-nav-sub">
+                                <li><a href="#">2020年度 春季</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+                        <li class="uk-parent">
+                            <a href="#">2015〜2019年度</a>
+                            <ul class="uk-nav-sub">
+                                <li><a href="#">2019年度 秋季</a></li>
+                                <li><a href="#">2019年度 春季</a></li>
+                                <li><a href="#">2018年度 秋季</a></li>
+                                <li><a href="#">2018年度 春季</a></li>
+                                <li><a href="#">2017年度 秋季</a></li>
+                                <li><a href="#">2017年度 春季</a></li>
+                                <li><a href="#">2016年度 秋季</a></li>
+                                <li><a href="#">2016年度 春季</a></li>
+                                <li><a href="#">2015年度 秋季</a></li>
+                                <li><a href="#">2015年度 春季</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+                        <li class="uk-parent">
+                            <a href="#">2010〜2014年度</a>
+                            <ul class="uk-nav-sub">
+                                <li><a href="#">2014年度 秋季</a></li>
+                                <li><a href="#">2014年度 春季</a></li>
+                                <li><a href="#">2013年度 秋季</a></li>
+                                <li><a href="#">2013年度 春季</a></li>
+                                <li><a href="#">2012年度 秋季</a></li>
+                                <li><a href="#">2012年度 春季</a></li>
+                                <li><a href="#">2011年度 秋季</a></li>
+                                <li><a href="#">2011年度 春季</a></li>
+                                <li><a href="#">2010年度 秋季</a></li>
+                                <li><a href="#">2010年度 春季</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <button class="uk-button uk-button-default" type="button">模擬試験</button>
+    <button class="uk-button uk-button-default" type="button">辞書</button>
+    <button class="uk-button uk-button-default" type="button">掲示板</button>
+    <button class="uk-button uk-button-default" type="button">参考書・問題書</button>
+  </div>
+  <!-- end(Head[1]) -->
+</header>
+<div id="contents">
+
+</div>
+<footer>
+  <div id="footer">
+    <div id="footer_menu" class="uk-width-1-2@s uk-width-2-5@m">
+      <ul class="uk-nav uk-nav-default">
+        <li class="uk-active"><a href="#">関連サイト</a></li>
+        <li><a href="#">実用タイ語検定試験合格.com</a></li>
+        <li><a href="#">実用英語技能検定試験合格.com</a></li>
+        <li><a href="#">韓国語能力試験合格.com</a></li>
+        <li><a href="#">実用中国語技能検定試験合格.com</a></li>
+        <li><a href="#">実用日本語検定試験合格.com</a></li>
+      </ul>
+    </div>
+    <div id="footer_menu" class="uk-width-1-2@s uk-width-2-5@m">
+      <ul class="uk-nav uk-nav-default">
+        <li class="uk-active"><a href="#">お問い合わせ</a></li>
+        <li class="uk-active"><a href="#">表示設定</a></li>
+        <li class="uk-active"><a href="#">運営情報</a></li>
+      </ul>
+    </div>
+    <div id="footer_menu" class="uk-width-1-2@s uk-width-2-5@m">
+      <ul class="uk-nav uk-nav-default">
+        <li class="uk-active"><a href="#">利用規約</a></li>
+        <li class="uk-active"><a href="#">サイトマップ</a></li>
+        <li class="uk-active"><a href="#">プライバシーポリシー</a></li>
+        <li class="uk-active"><a href="#">リンク</a></li>
+      </ul>
+    </div>
+    <div id="footer_logo">
+      <%= link_to("/") do %><%= image_tag "logo.png" %><%end%>
+      <span>実用<div class="dropdown">
+            <div class="select">
+              <span>タイ語</span>
+              <i class="fa fa-chevron-left"></i>
+            </div>
+            <input type="hidden" name="gender">
+            <ul class="dropdown-menu">
+              <li id="english">英語</li>
+              <li id="china">中国語</li>
+              <li id="japan">日本語</li>
+            </ul>
+          </div>検定試験合格.com</span>
+    </div>
+  </div>
+</footer>

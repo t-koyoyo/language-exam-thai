@@ -1,0 +1,2 @@
+class ExamGrade < ApplicationRecord
+end
