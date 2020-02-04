@@ -1,0 +1,44 @@
+<footer>
+  <div id="footer">
+    <div id="footer_menu" class="uk-width-1-2@s uk-width-2-5@m">
+      <ul class="uk-nav uk-nav-default">
+        <li class="uk-active"><a href="#">関連サイト</a></li>
+        <li><a href="#">実用タイ語検定試験合格.com</a></li>
+        <li><a href="#">実用英語技能検定試験合格.com</a></li>
+        <li><a href="#">韓国語能力試験合格.com</a></li>
+        <li><a href="#">実用中国語技能検定試験合格.com</a></li>
+        <li><a href="#">実用日本語検定試験合格.com</a></li>
+      </ul>
+    </div>
+    <div id="footer_menu" class="uk-width-1-2@s uk-width-2-5@m">
+      <ul class="uk-nav uk-nav-default">
+        <li class="uk-active"><a href="#">お問い合わせ</a></li>
+        <li class="uk-active"><a href="#">表示設定</a></li>
+        <li class="uk-active"><a href="#">運営情報</a></li>
+      </ul>
+    </div>
+    <div id="footer_menu" class="uk-width-1-2@s uk-width-2-5@m">
+      <ul class="uk-nav uk-nav-default">
+        <li class="uk-active"><a href="#">利用規約</a></li>
+        <li class="uk-active"><a href="#">サイトマップ</a></li>
+        <li class="uk-active"><a href="#">プライバシーポリシー</a></li>
+        <li class="uk-active"><a href="#">リンク</a></li>
+      </ul>
+    </div>
+    <div id="footer_logo">
+      <%= link_to("/") do %><%= image_tag "logo.png" %><%end%>
+      <span>実用<div class="dropdown">
+            <div class="select">
+              <span>タイ語</span>
+              <i class="fa fa-chevron-left"></i>
+            </div>
+            <input type="hidden" name="gender">
+            <ul class="dropdown-menu">
+              <li id="english">英語</li>
+              <li id="china">中国語</li>
+              <li id="japan">日本語</li>
+            </ul>
+          </div>検定試験合格.com</span>
+    </div>
+  </div>
+</footer>
