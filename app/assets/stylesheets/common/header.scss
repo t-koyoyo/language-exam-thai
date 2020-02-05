@@ -58,10 +58,11 @@ header{
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     box-sizing: border-box;
-    button{
+    .uk-button{
       border: 1px solid white;
-      box-sizing: border-box;
       &:hover{
+        background-color: transparent;
+        color: #333;
         border-color: #b2b2b2;
       }
     }

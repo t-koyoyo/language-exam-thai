@@ -31,9 +31,8 @@
   </div>
   <!-- uikit.ヘッダーメニュー(Head[1]) -->
   <div id="header_menu">
-    <%= button_to '実用タイ語検定とは', root_path, method: :get, class:"uk-button uk-button-default" %>
-    <%= button_to '過去問題解説', root_path, method: :get, class:"uk-button uk-button-default" %>
-    <%= button_to '過去問題道場', question_path, method: :get, class:"uk-button uk-button-default" %>
+    <%= link_to '実用タイ語検定とは', root_path, class:"uk-button uk-button-default" %>
+    <p class="uk-button uk-button-default">開催試験一覧</p>
     <div class="uk-width-large" uk-dropdown>
         <div class="uk-dropdown-grid uk-child-width-1-2@m" uk-grid>
             <div>
@@ -326,10 +325,12 @@
             </div>
         </div>
     </div>
-    <%= button_to '模擬試験', root_path, method: :get, class:"uk-button uk-button-default" %>
-    <%= button_to '辞書', root_path, method: :get, class:"uk-button uk-button-default" %>
-    <%= button_to '掲示板', root_path, method: :get, class:"uk-button uk-button-default" %>
-    <%= button_to '参考書・問題書', root_path, method: :get, class:"uk-button uk-button-default" %>
+    <%= link_to '過去問題道場', question_path, class:"uk-button uk-button-default" %>
+    <%= button_to '模擬試験', root_path, class:"uk-button uk-button-default" %>
+    <%= link_to '辞書', root_path, class:"uk-button uk-button-default" %>
+    <%= link_to '成績データベース', root_path, class:"uk-button uk-button-default" %>
+    <%= link_to 'おすすめ動画', root_path, class:"uk-button uk-button-default" %>
+    <%= link_to '参考書・問題集', root_path, class:"uk-button uk-button-default" %>
   </div>
   <!-- end(Head[1]) -->
 </header>
