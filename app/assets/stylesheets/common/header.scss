@@ -61,10 +61,11 @@ header{
     .uk-button{
       border: 1px solid white;
       &:hover{
-        background-color: transparent;
-        color: #333;
         border-color: #b2b2b2;
       }
+    }
+    .uk-button.current{
+      border-color: #b2b2b2;
     }
   }
 }

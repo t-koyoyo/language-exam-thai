@@ -1,5 +1,111 @@
-<%= render partial: "common/header" %>
+<%= render partial: "common/header", locals: {current_menu:"practice"} %>
 <div id="contents">
-  過去問道場内容
+  <div id="practice">
+    <div id="practice_left">
+      <div id="practice_left_slide">
+        <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="autoplay: true, autoplay-interval: 3000">
+          <ul class="uk-slideshow-items">
+            <li><img src="https://pro-foto.jp/img/f_25_topimg.jpg" alt="" uk-cover></li>
+            <li><img src="https://getuikit.com/docs/images/dark.jpg" alt="" uk-cover></li>
+            <li><img src="https://getuikit.com/docs/images/light.jpg" alt="" uk-cover></li>
+          </ul>
+          <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+          <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+        </div>
+      </div>
+      <div id="practice_left_description">
+        <p>・過去5年間(2010年〜2020年)、全1000問より出題設定に合わせ出題されます。</p>
+        <p>・過去5年間(2010年〜2020年)、全1000問より出題設定に合わせ出題されます。</p>
+      </div>
+      <div id="practice_left_setting">
+        <h3>♦︎出題設定♦︎</h3>
+        <p id="practice_left_setting_title"><b>1.級選択</b></p>
+        <div id="practice_left_setting_grade">
+          <ul>
+            <li><input type="checkbox" name="grade" checked />５級</li>
+            <li><input type="checkbox" name="grade" checked />４級</li>
+            <li><input type="checkbox" name="grade" checked />３級</li>
+            <li><input type="checkbox" name="grade" checked />準２級</li>
+            <li><input type="checkbox" name="grade" checked />２級</li>
+            <li><input type="checkbox" name="grade" checked />１級</li>
+          </ul>
+          <div id="practice_left_setting_grade_switch">
+            <input type="checkbox" id="grade" checked>
+            <label for="grade"><span></span></label>
+            <div id="swImg"></div>
+          </div>
+          <div id="practice_left_setting_grade_switch"><span>全項目</span></div>
+        </div>
+        <p id="practice_left_setting_title"><b>2.年度選択</b></p>
+        <div id="practice_left_setting_year">
+          <ul>
+            <li><input type="checkbox" name="year" checked />2020年春季</li>
+            <li><input type="checkbox" name="year" checked />2019年秋季</li>
+            <li><input type="checkbox" name="year" checked />2019年春季</li>
+            <li><input type="checkbox" name="year" checked />2018年秋季</li>
+            <li><input type="checkbox" name="year" checked />2018年春季</li>
+            <li><input type="checkbox" name="year" checked />2017年秋季</li>
+            <li><input type="checkbox" name="year" checked />2017年春季</li>
+            <li><input type="checkbox" name="year" checked />2016年秋季</li>
+            <li><input type="checkbox" name="year" checked />2016年春季</li>
+            <li><input type="checkbox" name="year" checked />2015年秋季</li>
+            <li><input type="checkbox" name="year" checked />2015年春季</li>
+            <li><input type="checkbox" name="year" checked />2014年秋季</li>
+          </ul>
+          <div id="practice_left_setting_year_switch">
+            <input type="checkbox" id="year" checked>
+            <label for="year"><span></span></label>
+            <div id="swImg"></div>
+          </div>
+          <div id="practice_left_setting_year_switch"><span>全項目</span></div>
+        </div>
+        <p id="practice_left_setting_title"><b>3.分野選択</b></p>
+        <div id="practice_left_setting_field">
+          <ul>
+            <li><input type="checkbox" name="field" checked />長文読解</li>
+            <li><input type="checkbox" name="field" checked />穴埋め問題</li>
+            <li><input type="checkbox" name="field" checked />並べ替え問題</li>
+          </ul>
+          <div id="practice_left_setting_field_switch">
+            <input type="checkbox" id="field" checked>
+            <label for="field"><span></span></label>
+            <div id="swImg"></div>
+          </div>
+          <div id="practice_left_setting_field_switch"><span>全項目</span></div>
+        </div>
+        <p id="practice_left_setting_title"><b>4.出題順序選択</b></p>
+        <div id="practice_left_setting_order">
+          <ul>
+            <li><input id="3" type="radio" name="order" checked><label for="3">標準</label></li>
+            <li><input id="4" type="radio" name="order" ><label for="4">ランダム</label></li>
+            <li><input id="5" type="radio" name="order" ><label for="5">正答率の高い順</label></li>
+            <li><input id="6" type="radio" name="order" ><label for="6">正答率の低い順</label></li>
+          </ul>
+        </div>
+        <p id="practice_left_setting_title"><b>5.オプション選択</b></p>
+        <div id="practice_left_setting_option">
+          <ul>
+            <li><input type="checkbox" name="option" checked />未解答問題のみ</li>
+            <li><input type="checkbox" name="option" checked />選択肢を並び替える</li>
+            <li><input type="checkbox" name="option" checked />解説がない問題は出題しない</li>
+            <li><input type="checkbox" name="option" checked />出題数を指定する</li>
+          </ul>
+          <div id="practice_left_setting_option_switch">
+            <input type="checkbox" id="option" checked>
+            <label for="option"><span></span></label>
+            <div id="swImg"></div>
+          </div>
+          <div id="practice_left_setting_option_switch"><span>全項目</span></div>
+        </div>
+      </div>
+      <div id="practice_left_start">
+        <p><input type="checkbox"/>検索条件を保存する</p>
+        <%# <p><button>前回終了時点から再開</button></p> %>
+        <p><button>出題開始</button></p>
+      </div>
+    </div>
+    <div id="practice_right">
+    </div>
+  </div>
 </div>
 <%= render partial: "common/footer" %>
