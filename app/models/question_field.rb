@@ -1,0 +1,2 @@
+class QuestionField < ApplicationRecord
+end

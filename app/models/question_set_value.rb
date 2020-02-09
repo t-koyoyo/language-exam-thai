@@ -1,0 +1,2 @@
+class QuestionSetValue < ApplicationRecord
+end

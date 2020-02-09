@@ -31,4 +31,51 @@ $(function(){
             $('#practice_left_setting_'+toggle_id+' input[name="'+toggle_id+'"]').prop('checked', false);
         }
     });
+
+    // 出題設定リスト表示・非表示
+    $("#practice_left_setting_list").on("click",function(){
+        $("#practice_left_setting_list_popup").fadeIn(500);
+        $("#popup_cover").fadeIn(500);
+    })
+    $("#popup_cover").on("click",function(){
+        $("#practice_left_setting_list_popup").fadeOut(500);
+        $("#popup_cover").fadeOut(500);
+    })
+    // 出題設定編集
+    $(".choice_lists_right_edit").on("click",function(){
+        list_number = $(this).attr("alt").match(/[0-9]/)
+        $("#practice_left_setting_list_popup dd").eq(list_number).find(".choice_lists_left_set input").attr("disabled", false);
+        $(this).hide();
+        $(".choice_lists_right_save").eq(list_number).css("display", "flex");
+    })
+    // 出題設定保存
+    $(".choice_lists_right_save").on("click",function(){
+        list_number = $(this).attr("alt").match(/[0-9]/)
+        $("#practice_left_setting_list_popup dd").eq(list_number).find(".choice_lists_left_set input").attr("disabled", true);
+        $(this).hide();
+        $(".choice_lists_right_edit").eq(list_number).show();
+    })
+
+    // キーボード表示
+    $("#practice_left_answer_input #keybord_open").on("click",function(){
+        if ($('#practice_left_answer_input_keybord').is(':visible')) {
+            $("#practice_left_answer_input_keybord").hide();
+        } else {
+            $("#practice_left_answer_input_keybord").show();
+        }
+    });
+    // キーボード入力[追加]
+    $("#practice_left_answer_input_keybord span").on("click",function(){
+        input_val = $("#practice_left_answer_input input").val()
+        // alert($("#practice_left_answer_input input").val())
+        // $("#practice_left_answer_input input").attr("value",input_val+$(this).text())
+        $("#practice_left_answer_input input").val(input_val+$(this).text())
+    })
+    // キーボード入力[削除]
+    $("#practice_left_answer_input_keybord_delete").on("click",function(){
+        input_val = $("#practice_left_answer_input input").val().slice( 0, -1 )
+        $("#practice_left_answer_input input").val(input_val)
+    })
+
+
 })

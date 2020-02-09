@@ -1,0 +1,487 @@
+<%= render partial: "common/header", locals: {current_menu:"practice"} %>
+<div id="contents">
+  <div id="practice">
+    <div id="practice_left">
+      <div id="practice_left_slide">
+        <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="autoplay: true, autoplay-interval: 3000">
+          <ul class="uk-slideshow-items">
+            <li><img src="https://pro-foto.jp/img/f_25_topimg.jpg" alt="" uk-cover></li>
+            <li><img src="https://getuikit.com/docs/images/dark.jpg" alt="" uk-cover></li>
+            <li><img src="https://getuikit.com/docs/images/light.jpg" alt="" uk-cover></li>
+          </ul>
+          <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+          <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+        </div>
+      </div>
+      <div id="practice_left_description">
+        <p>・過去5年間(2010年〜2020年)、全1000問より出題設定に合わせ出題されます。</p>
+        <p>・過去5年間(2010年〜2020年)、全1000問より出題設定に合わせ出題されます。</p>
+      </div>
+      <%= form_tag("/question", method: :post) do %>
+        <div id="practice_left_setting">
+          <h3>♦︎出題設定♦︎</h3>
+          <p id="practice_left_setting_title"><b>1.級選択</b></p>
+          <div id="practice_left_setting_grade">
+            <ul>
+              <% QuestionSetValue.where(question_set_type_id:1).each do |value| %>
+                <li><input type="checkbox" name="grade[]" value="<%=value.name%>" checked /><%=value.name%></li>
+              <% end %>
+            </ul>
+            <div id="practice_left_setting_grade_switch">
+              <input type="checkbox" id="grade" checked>
+              <label for="grade"><span></span></label>
+              <div id="swImg"></div>
+            </div>
+            <div id="practice_left_setting_grade_switch"><span>全項目</span></div>
+          </div>
+          <p id="practice_left_setting_title"><b>2.年度選択</b></p>
+          <div id="practice_left_setting_year">
+            <ul>
+              <% QuestionSetValue.where(question_set_type_id:2).each do |value| %>
+                <li><input type="checkbox" name="year[]" value="<%=value.name%>" checked /><%= value.name %></li>
+              <% end %>
+            </ul>
+            <div id="practice_left_setting_year_switch">
+              <input type="checkbox" id="year" checked>
+              <label for="year"><span></span></label>
+              <div id="swImg"></div>
+            </div>
+            <div id="practice_left_setting_year_switch"><span>全項目</span></div>
+          </div>
+          <p id="practice_left_setting_title"><b>3.分野選択</b></p>
+          <div id="practice_left_setting_field">
+            <ul>
+              <% QuestionSetValue.where(question_set_type_id:3).each do |value| %>
+                <li><input type="checkbox" name="field[]" value="<%=value.name%>" checked /><%= value.name %></li>
+              <% end %>
+            </ul>
+            <div id="practice_left_setting_field_switch">
+              <input type="checkbox" id="field" checked>
+              <label for="field"><span></span></label>
+              <div id="swImg"></div>
+            </div>
+            <div id="practice_left_setting_field_switch"><span>全項目</span></div>
+          </div>
+          <p id="practice_left_setting_title"><b>4.出題順序選択</b></p>
+          <div id="practice_left_setting_order">
+            <ul>
+              <% QuestionSetValue.where(question_set_type_id:4).each_with_index do |value, index| %>
+                <% if index==0 then%>
+                  <li><input id="<%=value.id%>" type="radio" name="order" value="<%=value.name%>" checked><label for="<%=value.id%>"><%=value.name%></label></li>
+                <% else %>
+                  <li><input id="<%=value.id%>" type="radio" name="order" value="<%=value.name%>"><label for="<%=value.id%>"><%=value.name%></label></li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+          <p id="practice_left_setting_title"><b>5.オプション選択</b></p>
+          <div id="practice_left_setting_option">
+            <ul>
+              <% QuestionSetValue.where(question_set_type_id:5).each do |value| %>
+                <li><input type="checkbox" name="option[]" value="<%=value.name%>" checked /><%=value.name%></li>
+              <% end %>
+            </ul>
+            <div id="practice_left_setting_option_switch">
+              <input type="checkbox" id="option" checked>
+              <label for="option"><span></span></label>
+              <div id="swImg"></div>
+            </div>
+            <div id="practice_left_setting_option_switch"><span>全項目</span></div>
+          </div>
+          <span id="practice_left_setting_list"><i class="fas fa-clipboard-list"></i> 出題設定リスト</span>
+          <div id="practice_left_setting_list_popup">
+            <h3>出題設定リスト</h3>
+            <dd>
+              <b>１.</b><p><input type="radio" name="default" checked>デフォルトに設定する</p>
+              <div class="choice_lists">
+                <div class="choice_lists_left">
+                  <ul>
+                    <li>
+                      <p class="choice_lists_left_menu">級</p>
+                      <div class="choice_lists_left_set">
+                        <div><label>
+                          <input type="checkbox" checked disabled><span class="check"></span><span>５級</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled><span class="check"></span><span>４級</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled><span class="check"></span><span>３級</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled><span class="check"></span><span>準２級</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled><span class="check"></span><span>２級</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled><span class="check"></span><span>１級</span>
+                        </label></div>
+                      </div>
+                    </li>
+                    <li>
+                      <p class="choice_lists_left_menu">年度</p>
+                      <div class="choice_lists_left_set">
+                        <div><label>
+                          <input type="checkbox" checked disabled><span class="check"></span><span>2020年春季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled><span class="check"></span><span>2019年秋季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled><span class="check"></span><span>2019年春季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled><span class="check"></span><span>2018年秋季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled><span class="check"></span><span>2018年春季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled><span class="check"></span><span>2017年秋季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled><span class="check"></span><span>2017年春季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled><span class="check"></span><span>2016年秋季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled><span class="check"></span><span>2016年春季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled><span class="check"></span><span>2015年秋季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled><span class="check"></span><span>2015年春季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled><span class="check"></span><span>2014年秋季</span>
+                        </label></div>
+                      </div>
+                    </li>
+                    <li>
+                      <p class="choice_lists_left_menu">分野</p>
+                      <div class="choice_lists_left_set">
+                        <div><label>
+                          <input type="checkbox" checked disabled><span class="check"></span><span>長文読解</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled><span class="check"></span><span>穴埋め問題</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled><span class="check"></span><span>並べ替え問題</span>
+                        </label></div>
+                      </div>
+                    </li>
+                    <li>
+                      <p class="choice_lists_left_menu">出題順序</p>
+                      <div class="choice_lists_left_set">
+                        <div><label>
+                          <input type="radio" name="order[0]" checked disabled><span class="radio"></span><span>標準</span>
+                        </label></div>
+                        <div><label>
+                          <input type="radio" name="order[0]" disabled><span class="radio"></span><span>ランダム</span>
+                        </label></div>
+                        <div><label>
+                          <input type="radio" name="order[0]" disabled><span class="radio"></span><span>正答率の高い順</span>
+                        </label></div>
+                        <div><label>
+                          <input type="radio" name="order[0]" disabled><span class="radio"></span><span>正答率の低い順</span>
+                        </label></div>
+                      </div>
+                    </li>
+                    <li>
+                      <p class="choice_lists_left_menu">オプション</p>
+                      <div class="choice_lists_left_set">
+                        <div><label>
+                          <input type="checkbox" checked disabled><span class="check"></span><span>未解答問題のみ</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled><span class="check"></span><span>選択肢を並び替える</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled><span class="check"></span><span>解説がない問題は出題しない</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled><span class="check"></span><span>出題数を指定する</span>
+                        </label></div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="choice_lists_right">
+                  <li class="choice_lists_right_start" alt="list0"><span>出題開始</span></li>
+                  <li class="choice_lists_right_edit" alt="list0"><span>編集</span></li>
+                  <li class="choice_lists_right_save" alt="list0"><span>保存</span></li>
+                  <li class="choice_lists_right_delete" alt="list0"><span>削除</span></li>
+                </div>
+              </div>
+            </dd>
+            <dd>
+              <b>２.</b><p><input type="radio" name="default">デフォルトに設定する</p>
+              <div class="choice_lists">
+                <div class="choice_lists_left">
+                  <ul>
+                    <li>
+                      <p class="choice_lists_left_menu">級</p>
+                      <div class="choice_lists_left_set">
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>５級</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>４級</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>３級</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>準２級</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>２級</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>１級</span>
+                        </label></div>
+                      </div>
+                    </li>
+                    <li>
+                      <p class="choice_lists_left_menu">年度</p>
+                      <div class="choice_lists_left_set">
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>2020年春季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>2019年秋季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>2019年春季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>2018年秋季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>2018年春季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>2017年秋季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>2017年春季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>2016年秋季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>2016年春季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>2015年秋季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>2015年春季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>2014年秋季</span>
+                        </label></div>
+                      </div>
+                    </li>
+                    <li>
+                      <p class="choice_lists_left_menu">分野</p>
+                      <div class="choice_lists_left_set">
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>長文読解</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>穴埋め問題</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>並べ替え問題</span>
+                        </label></div>
+                      </div>
+                    </li>
+                    <li>
+                      <p class="choice_lists_left_menu">出題順序</p>
+                      <div class="choice_lists_left_set">
+                        <div><label>
+                          <input type="radio" name="order[1]" checked disabled ><span class="radio"></span><span>標準</span>
+                        </label></div>
+                        <div><label>
+                          <input type="radio" name="order[1]" disabled><span class="radio"></span><span>ランダム</span>
+                        </label></div>
+                        <div><label>
+                          <input type="radio" name="order[1]" disabled><span class="radio"></span><span>正答率の高い順</span>
+                        </label></div>
+                        <div><label>
+                          <input type="radio" name="order[1]" disabled><span class="radio"></span><span>正答率の低い順</span>
+                        </label></div>
+                      </div>
+                    </li>
+                    <li>
+                      <p class="choice_lists_left_menu">オプション</p>
+                      <div class="choice_lists_left_set">
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>未解答問題のみ</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>選択肢を並び替える</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>解説がない問題は出題しない</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>出題数を指定する</span>
+                        </label></div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="choice_lists_right">
+                  <li class="choice_lists_right_start" alt="list1"><span>出題開始</span></li>
+                  <li class="choice_lists_right_edit" alt="list1"><span>編集</span></li>
+                  <li class="choice_lists_right_save" alt="list1"><span>保存</span></li>
+                  <li class="choice_lists_right_delete" alt="list1"><span>削除</span></li>
+                </div>
+              </div>
+            </dd>
+            <dd>
+              <b>３.</b><p><input type="radio" name="default">デフォルトに設定する</p>
+              <div class="choice_lists">
+                <div class="choice_lists_left">
+                  <ul>
+                    <li>
+                      <p class="choice_lists_left_menu">級</p>
+                      <div class="choice_lists_left_set">
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>５級</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>４級</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>３級</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>準２級</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>２級</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>１級</span>
+                        </label></div>
+                      </div>
+                    </li>
+                    <li>
+                      <p class="choice_lists_left_menu">年度</p>
+                      <div class="choice_lists_left_set">
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>2020年春季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>2019年秋季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>2019年春季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>2018年秋季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>2018年春季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>2017年秋季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>2017年春季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>2016年秋季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>2016年春季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>2015年秋季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>2015年春季</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>2014年秋季</span>
+                        </label></div>
+                      </div>
+                    </li>
+                    <li>
+                      <p class="choice_lists_left_menu">分野</p>
+                      <div class="choice_lists_left_set">
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>長文読解</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>穴埋め問題</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>並べ替え問題</span>
+                        </label></div>
+                      </div>
+                    </li>
+                    <li>
+                      <p class="choice_lists_left_menu">出題順序</p>
+                      <div class="choice_lists_left_set">
+                        <div><label>
+                          <input type="radio" name="order[2]" checked disabled ><span class="radio"></span><span>標準</span>
+                        </label></div>
+                        <div><label>
+                          <input type="radio" name="order[2]" disabled><span class="radio"></span><span>ランダム</span>
+                        </label></div>
+                        <div><label>
+                          <input type="radio" name="order[2]" disabled><span class="radio"></span><span>正答率の高い順</span>
+                        </label></div>
+                        <div><label>
+                          <input type="radio" name="order[2]" disabled><span class="radio"></span><span>正答率の低い順</span>
+                        </label></div>
+                      </div>
+                    </li>
+                    <li>
+                      <p class="choice_lists_left_menu">オプション</p>
+                      <div class="choice_lists_left_set">
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>未解答問題のみ</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>選択肢を並び替える</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>解説がない問題は出題しない</span>
+                        </label></div>
+                        <div><label>
+                          <input type="checkbox" checked disabled ><span class="check"></span><span>出題数を指定する</span>
+                        </label></div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="choice_lists_right">
+                  <li class="choice_lists_right_start" alt="list2"><span>出題開始</span></li>
+                  <li class="choice_lists_right_edit" alt="list2"><span>編集</span></li>
+                  <li class="choice_lists_right_save" alt="list2"><span>保存</span></li>
+                  <li class="choice_lists_right_delete" alt="list2"><span>削除</span></li>
+                </div>
+              </div>
+            </dd>
+          </div>
+        </div>
+        <div id="practice_left_start">
+          <p><input type="checkbox"/>検索条件を保存する</p>
+          <p><%= button_tag("出題開始") %></p>
+        </div>
+      <% end %>
+    </div>
+    <div id="practice_right">
+    </div>
+  </div>
+</div>
+<%= render partial: "common/footer" %>

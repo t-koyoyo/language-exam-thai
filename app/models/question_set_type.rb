@@ -1,0 +1,2 @@
+class QuestionSetType < ApplicationRecord
+end
