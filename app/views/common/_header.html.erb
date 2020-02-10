@@ -332,7 +332,11 @@
     <%= link_to '模擬試験', root_path, class:"uk-button uk-button-default" %>
     <%= link_to '辞書', root_path, class:"uk-button uk-button-default" %>
     <%= link_to '成績データベース', root_path, class:"uk-button uk-button-default" %>
-    <%= link_to 'おすすめ動画', root_path, class:"uk-button uk-button-default" %>
+    <% if current_menu == "recommend" %>
+        <%= link_to 'おすすめサイト・動画', recommend_path, class:"uk-button uk-button-default current" %>
+    <% else %>
+        <%= link_to 'おすすめサイト・動画', recommend_path, class:"uk-button uk-button-default" %>
+    <% end %>
     <%= link_to '参考書・問題集', root_path, class:"uk-button uk-button-default" %>
   </div>
   <!-- end(Head[1]) -->

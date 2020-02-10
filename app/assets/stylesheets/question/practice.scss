@@ -155,66 +155,58 @@
       }
     }
     &_next{
-      
+      overflow: auto;
+      margin: 2% 3%;
+      li{
+        list-style: none;
+        width: 50%;
+        float: left;
+        .button {
+          background: #00bc53;
+          margin : 20px auto;
+          width : 200px;
+          height : 50px;
+          overflow: hidden;
+          text-align : center;
+          transition : .2s;
+          cursor : pointer;
+          border-radius: 3px;
+          box-shadow: 0px 1px 2px rgba(0,0,0,.2);
+          &:hover{
+            .btnText{margin-left : 65px;}
+            .btnTwo{left: -130px;}
+          }
+          &:active {box-shadow: 0px 5px 6px rgba(0,0,0,0.3);}
+          .btnText {
+            color : white;
+            transition : .3s;
+            line-height: 50px;
+            margin: 0;
+          }
+          .btnTwo {
+            position : relative;
+            width : 200px;
+            height : 100px;
+            margin-top: -100px;
+            padding-top: 5px;
+            background : #ffa300;
+            left : -250px;
+            transition : .3s;
+            .btnText2 {
+              margin-top : 63px;
+              margin-right : -130px;
+              color : #FFF;
+            }
+          }
+        }
+      }
+    }
+    &_advertisement{
+      overflow: auto;
+      margin: 2% 3%;
+      background-color: burlywood;
+      h1:nth-child(2n+1){background-color:gold;}
+      h1:nth-child(2n){background-color:goldenrod;}
     }
   }
 }
-
-@import url(https://fonts.googleapis.com/css?family=Roboto:700);
-html, body{background : #FBC02D; font-family : Roboto; height: 100%; width: 100%; margin: 0;}
-
-#holder{
-  -moz-user-select: -moz-none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  background: white;
-  padding: 10px;
-  width: 250px;
-  margin: 0 auto;
-  position: relative;
-  top: 50%;
-  transform: translateY(-65%);
-  box-shadow: 0px 3px 8px rgba(0,0,0,0.25);
-  border-radius: 2px;
-}
-.button {
-  background: #3D4C53;
-  margin : 20px auto;
-  width : 200px;
-  height : 50px;
-  overflow: hidden;
-  text-align : center;
-  transition : .2s;
-  cursor : pointer;
-  border-radius: 3px;
-  box-shadow: 0px 1px 2px rgba(0,0,0,.2);
-}
-.btnTwo {
-  position : relative;
-  width : 200px;
-  height : 100px;
-  margin-top: -100px;
-  padding-top: 2px;
-  background : #26A69A;
-  left : -250px;
-  transition : .3s;
-}
-.btnText {
-  color : white;
-  transition : .3s;
-}
-.btnText2 {
-  margin-top : 63px;
-  margin-right : -130px;
-  color : #FFF;
-}
-.button:hover .btnTwo{ /*When hovering over .button change .btnTwo*/
-  left: -130px;
-}
-.button:hover .btnText{ /*When hovering over .button change .btnText*/
-  margin-left : 65px;
-}
-.button:active { /*Clicked and held*/
-  box-shadow: 0px 5px 6px rgba(0,0,0,0.3);
-}
-
