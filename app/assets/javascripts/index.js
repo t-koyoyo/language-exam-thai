@@ -58,10 +58,11 @@ $(function(){
 
     // キーボード表示
     $("#practice_left_answer_input #keybord_open").on("click",function(){
-        if ($('#practice_left_answer_input_keybord').is(':visible')) {
-            $("#practice_left_answer_input_keybord").hide();
+        // alert($('#practice_left_answer_input_keybord').css('height'))
+        if ($('#practice_left_answer_input_keybord').css('height')== "0px") {
+            $("#practice_left_answer_input_keybord").css("height","170px");
         } else {
-            $("#practice_left_answer_input_keybord").show();
+            $("#practice_left_answer_input_keybord").css("height","0");
         }
     });
     // キーボード入力[追加]
@@ -77,5 +78,7 @@ $(function(){
         $("#practice_left_answer_input input").val(input_val)
     })
 
+
+    
 
 })
