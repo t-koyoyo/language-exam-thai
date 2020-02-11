@@ -78,7 +78,37 @@ $(function(){
         $("#practice_left_answer_input input").val(input_val)
     })
 
-
-    
-
+    // おすすめサイト・動画詳細検索部分表示
+    $("#contents_recommend_search_main_ather i").on("click",function(){
+        if ($(this).attr("alt") == "open") {
+            // 表示処理
+            $("#contents_recommend_search_sub").css("height","105px");
+            $(this).hide();
+            $("#contents_recommend_search_main_ather .close").show();
+        } else {
+            // 非表示処理
+            $("#contents_recommend_search_sub").css("height","0");
+            $(this).hide();
+            $("#contents_recommend_search_main_ather .open").show();
+        }
+    })
+    // おすすめサイト・動画検索ラベル追加
+    $("#contents_recommend_search_sub_add button").on("click",function(){
+        label_name = $("#contents_recommend_search_sub_label input").val();
+        add_html = '<div class="chip">'+label_name+'<i class="close material-icons">×</i></div>'
+        $("#contents_recommend_search_main_words dd").append(add_html);
+    })
+    // おすすめサイト・動画表示方法変更
+    $("#contents_recommend_order p").on("click",function(){
+        want_to_way = $(this).attr("alt")
+        $("#contents_recommend_order .current").attr("class","no-current");
+        $(this).attr("class","current");
+        if (want_to_way == "block") {
+            $("#contents_recommend_main_"+"list").hide();
+            $("#contents_recommend_main_"+"block").show();
+        } else {
+            $("#contents_recommend_main_"+"block").hide();
+            $("#contents_recommend_main_"+"list").show();
+        }
+    })
 })

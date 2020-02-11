@@ -1,5 +1,233 @@
 <%= render partial: "common/header", locals: {current_menu:"recommend"}  %>
 <div id="contents">
-  おすすめサイト・動画内容
+  <div id="contents_recommend">
+    <div id="contents_recommend_search">
+      <div id="contents_recommend_search_main">
+        <div id="contents_recommend_search_main_words">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="search" type="text" class="validate" autocomplete="off">
+              <label for="search">Search</label>
+              <i class="fas fa-search"></i>
+            </div>
+            <dd></dd>
+          </div>
+        </div>
+        <div id="contents_recommend_search_main_ather">
+          <p><b>詳細検索</b></p>
+          <i class="fas fa-chevron-circle-down open" alt="open"></i>
+          <i class="fas fa-chevron-circle-up close" alt="close"></i>
+        </div>
+      </div>
+      <div id="contents_recommend_search_sub">
+        <div id="contents_recommend_search_sub_label">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="label" type="text" class="validate" autocomplete="off" list="tokyo">
+              <datalist id="tokyo">
+                <option value="渋谷">
+                <option value="新宿">
+                <option value="池袋">
+              </datalist>
+              <label for="label">ラベル追加</label>
+            </div>
+          </div>
+        </div>
+        <div id="contents_recommend_search_sub_add">
+          <button class="uk-button uk-button-default">追加</button>
+        </div>
+        <div id="contents_recommend_search_sub_type">
+          <div>
+            <select required>
+              <option value="0" selected>全て</option>
+              <option value="1">Webサイトのみ</option>
+              <option value="2">動画のみ</option>
+            </select>
+            <label>表示種類</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="contents_recommend_order">
+      <p class="no-current" alt="block"><i class="fas fa-th"></i></p>
+      <p class="current" alt="list"><i class="fas fa-th-list"></i></p>
+      <p title="表示方法の変更が可能">表示：</p>
+    </div>
+    <div id="contents_recommend_main">
+      <div id="contents_recommend_main_list">
+        <table class="uk-table uk-table-justify uk-table-divider">
+          <thead>
+              <tr>
+                <th class="uk-width-small">タイトル</th>
+                <th class="uk-width-small">サムネ</th>
+                <th>概要</th>
+                <th>表示</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td><p>タイ語にチャレンジ！</p></td>
+                <td><img src="https://ドラえもん.jp/wp-content/uploads/2016/05/dorami-dora_750.png"></td>
+                <td>
+                  <p>やっぱりタイ語で話せたり読み書きできたらいいなぁ、ということで、私と一緒に、タイ語にチャレンジしましょう。（これが中々難しいんですね ...　いつまでたっても上達しない～ (´▽｀*) ）タイ語のアルファベットや数字から、基本のフレーズ、簡単な会話まで、タイへ旅行に行ったときなど、お役に立てれば幸いです。タイ語の基本タイ文字関連数字や年月日生活関連サバイバル感情いろいろ季節やイベントその他（こと</p>
+                  <span class="uk-label">Default</span>&nbsp;
+                  <span class="uk-label">Default</span>&nbsp;
+                  <span class="uk-label">Default</span>&nbsp;
+                  <span class="uk-label">Default</span>&nbsp;
+                  <p>
+                    おすすめ度:&nbsp;
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                  </p>
+                </td>
+                <td><a href="http://www.thaismile.jp/index4.html" target="_blank" class="uk-button uk-button-default">Open!</a></td>
+            </tr>
+            <tr>
+                <td><p>タイ語レッスン 【改訂版】タイ語初心者の方も安心の基礎中の基礎を学ぶ！簡単かつすぐに使える単語！</p></td>
+                <td><img src="https://i.ytimg.com/vi/3wz2jFtzlGk/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLDT7b_5UP7_1gw52lwbyjyr9hlNlA"></td>
+                <td>
+                  <p>今回は意外と触れてこなかったタイ語の基礎中の基礎を追求しました！実際に調べられてるタイ語をリサーチ！簡単かつすぐに使える単語集になってます！タイ語初心者の方も安心して見て頂けると思います！To overseas viewersThis time I didn't touchWe pursued the basics in the basics of Thai!</p>
+                  <span class="uk-label">Default</span>&nbsp;
+                  <span class="uk-label">Default</span>&nbsp;
+                  <span class="uk-label">Default</span>&nbsp;
+                  <span class="uk-label">Default</span>&nbsp;
+                  <p>
+                    おすすめ度:&nbsp;
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                  </p>
+                </td>
+                <td><a href="https://www.youtube.com/watch?v=3wz2jFtzlGk&t=6s" target="_blank" class="uk-button uk-button-default">Open!</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="contents_recommend_main_block">
+        <ul>
+          <li>
+            <div class="card">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="https://ドラえもん.jp/wp-content/uploads/2016/05/dorami-dora_750.png">
+              </div>
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right fas fa-ellipsis-v"></i></span>
+                <p><a href="#">Open!</a></p>
+              </div>
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">×</i></span>
+                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="https://ドラえもん.jp/wp-content/uploads/2016/05/dorami-dora_750.png">
+              </div>
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right fas fa-ellipsis-v"></i></span>
+                <p><a href="#">Open!</a></p>
+              </div>
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">×</i></span>
+                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="https://ドラえもん.jp/wp-content/uploads/2016/05/dorami-dora_750.png">
+              </div>
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right fas fa-ellipsis-v"></i></span>
+                <p><a href="#">Open!</a></p>
+              </div>
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">×</i></span>
+                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="https://i.ytimg.com/vi/3wz2jFtzlGk/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLDT7b_5UP7_1gw52lwbyjyr9hlNlA">
+              </div>
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right fas fa-ellipsis-v"></i></span>
+                <p><a href="#">Open!</a></p>
+              </div>
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">×</i></span>
+                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="https://i.ytimg.com/vi/3wz2jFtzlGk/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLDT7b_5UP7_1gw52lwbyjyr9hlNlA">
+              </div>
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right fas fa-ellipsis-v"></i></span>
+                <p><a href="#">Open!</a></p>
+              </div>
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">×</i></span>
+                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="https://ドラえもん.jp/wp-content/uploads/2016/05/dorami-dora_750.png">
+              </div>
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right fas fa-ellipsis-v"></i></span>
+                <p><a href="#">Open!</a></p>
+              </div>
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">×</i></span>
+                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="https://ドラえもん.jp/wp-content/uploads/2016/05/dorami-dora_750.png">
+              </div>
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right fas fa-ellipsis-v"></i></span>
+                <p><a href="#">Open!</a></p>
+              </div>
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">×</i></span>
+                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 <%= render partial: "common/footer" %>
