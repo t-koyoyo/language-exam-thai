@@ -58,7 +58,13 @@
             &_label{
                 float: left;
                 width: 25%;
-                .row{margin-bottom: 0;}
+                .row{
+                    margin-bottom: 0;
+                    #error_message{
+                        color: red;
+                        display: none;
+                    }
+                }
             }
             &_add{
                 float: left;
@@ -130,7 +136,12 @@
         overflow: auto;
         margin: 1% 3%;
         &_list{
-            
+            tbody tr td .description{
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 4;
+                overflow: hidden;
+            }
         }
         &_block{
             display: none;

@@ -95,8 +95,15 @@ $(function(){
     // おすすめサイト・動画検索ラベル追加
     $("#contents_recommend_search_sub_add button").on("click",function(){
         label_name = $("#contents_recommend_search_sub_label input").val();
-        add_html = '<div class="chip">'+label_name+'<i class="close material-icons">×</i></div>'
-        $("#contents_recommend_search_main_words dd").append(add_html);
+        $.each(gon.label, function(index, label) {
+            if (label.name == label_name) {
+                $("#contents_recommend_search_sub_label #error_message").hide();
+                add_html = '<div class="chip" style="background-color:#'+label.color+';">'+label_name+'<i class="close material-icons">×</i></div>'
+                $("#contents_recommend_search_main_words dd").append(add_html);
+                ev.preventDefault();
+            }
+        })
+        $("#contents_recommend_search_sub_label #error_message").show();
     })
     // おすすめサイト・動画表示方法変更
     $("#contents_recommend_order p").on("click",function(){

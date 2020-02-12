@@ -1,0 +1,2 @@
+class RecommendLabel < ApplicationRecord
+end

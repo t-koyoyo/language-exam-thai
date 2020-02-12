@@ -1,31 +1,41 @@
 <header>
   <div id="header">
     <div id="header_center">
-      <div id="header_center_left">
-        <p>実用タイ語検定 試験情報＆模擬試験</p>
-        <%= link_to("/") do %><%= image_tag "logo.png" %><%end%><span>実用</span>
-          <div class="dropdown">
-            <div class="select">
-              <span>タイ語</span>
+        <div id="header_center_left">
+            <p>実用タイ語検定 試験情報＆模擬試験</p>
+            <%= link_to("/") do %><%= image_tag "logo.png" %><%end%><span>実用</span>
+            <div class="dropdown">
+                <div class="select">
+                    <span>タイ語</span>
+                </div>
+                <input type="hidden" name="gender">
+                <ul class="dropdown-menu">
+                    <li id="english">英語</li>
+                    <li id="china">中国語</li>
+                    <li id="japan">日本語</li>
+                </ul>
             </div>
-            <input type="hidden" name="gender">
-            <ul class="dropdown-menu">
-              <li id="english">英語</li>
-              <li id="china">中国語</li>
-              <li id="japan">日本語</li>
-            </ul>
-          </div>
-        <span>検定試験合格.com</span>
-      </div>
-      <div id="header_center_right">
-        <div>
-          <p>次回試験日は、<b>2020年6月7日(日)</b></p>
-          <p>開催まであと<b>77</b>日!!</p>
-          <!--<p><a href="http://www.thaigokentei.com/howto/" target="_blank" rel="noopener">出願受付開始まであと<b>70</b>日!!</a></p>-->
-          <!--<p><a href="http://www.thaigokentei.com/howto/" target="_blank" rel="noopener">出願受付中!!</a></p>-->
-          <p><a href="http://www.thaigokentei.com/howto/" target="_blank" rel="noopener">出願受付終了!!</a></p>
+            <span>検定試験合格.com</span>
         </div>
-      </div>
+        <div id="header_center_right">
+            <div>
+                <% if @next_exam.event_status == "開催前" %>
+                    <p>次回試験日は、<b><%=@next_exam.event_date.strftime("%Y年%m月%d日")%></b></p>
+                    <p>開催まであと<b><%=@rest_date%></b>日!!</p>
+                <% elsif @next_exam.event_status == "開催日" %>
+                    <p>本日は、<b><%=@next_exam.strftime("%Y年%m月%d日")%></b></p>
+                    <p><b>試験開催日!!</b></p>
+                <% end %>
+                <!--出願状況は出願前、出願開始日が存在しない-->
+                <p><a href="http://www.thaigokentei.com/howto/" target="_blank" rel="noopener">出願受付開始前!!</a></p>
+                <!--出願状況は出願前、出願開始日が存在し未来日-->
+                <%# <p><a href="http://www.thaigokentei.com/howto/" target="_blank" rel="noopener">出願受付開始まであと<b>70</b>日!!</a></p> %>
+                <!--出願状況は出願中、出願開始日が存在し過去日-->
+                <!--<p><a href="http://www.thaigokentei.com/howto/" target="_blank" rel="noopener">出願受付中!!</a></p>-->
+                <!--出願状況は出願終了、出願開始日が存在し過去日-->
+                <%# <p><a href="http://www.thaigokentei.com/howto/" target="_blank" rel="noopener">出願受付終了!!</a></p> %>
+            </div>
+        </div>
     </div>
   </div>
   <!-- uikit.ヘッダーメニュー(Head[1]) -->

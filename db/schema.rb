@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_08_193648) do
+ActiveRecord::Schema.define(version: 2020_02_12_033730) do
 
   create_table "exam_grades", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", comment: "試験級", force: :cascade do |t|
     t.bigint "exam_id", comment: "試験"
@@ -31,6 +31,11 @@ ActiveRecord::Schema.define(version: 2020_02_08_193648) do
     t.integer "total_Examinee", comment: "受験者数"
     t.integer "total_pass", comment: "合格者数"
     t.float "pass_rate", comment: "合格率"
+  end
+
+  create_table "labels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", comment: "ラベル", force: :cascade do |t|
+    t.string "name", comment: "ラベル名"
+    t.string "color", comment: "ラベル色"
   end
 
   create_table "question_answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", comment: "問題解答", force: :cascade do |t|
@@ -67,9 +72,28 @@ ActiveRecord::Schema.define(version: 2020_02_08_193648) do
     t.index ["question_field_id"], name: "index_questions_on_question_field_id"
   end
 
+  create_table "recommend_labels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", comment: "おすすめラベル", force: :cascade do |t|
+    t.bigint "recommend_id", comment: "おすすめ"
+    t.bigint "label_id", comment: "ラベル"
+    t.index ["label_id"], name: "index_recommend_labels_on_label_id"
+    t.index ["recommend_id"], name: "index_recommend_labels_on_recommend_id"
+  end
+
+  create_table "recommends", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", comment: "おすすめ", force: :cascade do |t|
+    t.string "type", comment: "種別"
+    t.string "title", comment: "タイトル"
+    t.text "description", comment: "説明"
+    t.string "site_url", comment: "サイトURL"
+    t.string "image_url", comment: "画像URL"
+    t.integer "click", comment: "クリック数"
+    t.boolean "delete_flg", comment: "削除フラグ"
+  end
+
   add_foreign_key "exam_grades", "exams"
   add_foreign_key "question_answers", "questions"
   add_foreign_key "question_set_values", "question_set_types"
   add_foreign_key "questions", "exam_grades"
   add_foreign_key "questions", "question_fields"
+  add_foreign_key "recommend_labels", "labels"
+  add_foreign_key "recommend_labels", "recommends"
 end
