@@ -18,7 +18,9 @@ class RecommendController < ApplicationController
     end
 
     # ラベル詳細検索
-    gon.label = Label.all
+    gon.label_name = Label.all.pluck(:name)
+    gon.label_font_color = Label.all.pluck(:font_color)
+    gon.label_background_color = Label.all.pluck(:background_color)
   end
 
 end

@@ -77,10 +77,7 @@
                     margin-bottom: 0;
                     .input-field{
                         input{background-color: honeydew;}
-                        #error_message{
-                            color: red;
-                            display: none;
-                        }
+                        #error_message{color: red;}
                         label:not(.label-icon).active{
                             color: #008080;
                         }

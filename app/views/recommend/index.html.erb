@@ -29,10 +29,10 @@
           <div class="row">
             <div class="input-field col s12">
               <input id="label" type="text" class="validate" autocomplete="off" list="labels">
-              <span id="error_message"><b>入力されたラベルが存在しません！</b></span>
+              <b><span id="error_message"></span></b>
               <datalist id="labels">
                 <% Label.all.each do |label| %>
-                  <option value="<%=label.name%>" alt="<%=label.color%>">
+                  <option value="<%=label.name%>" alt="<%=label.font_color%>,<%=label.background_color%>">
                 <% end %>
               </datalist>
               <label for="label">ラベル追加</label>
@@ -78,7 +78,9 @@
                 <td>
                   <p class="description"><%=recommend.description%></p>
                   <% RecommendLabel.where(recommend_id:recommend.id).each do |recommend_label| %>
-                    <span class="uk-label" style="background:#<%=Label.find(recommend_label.label_id).color%>;"><%=Label.find(recommend_label.label_id).name%></span>&nbsp;
+                    <span class="uk-label" style="color:<%=Label.find(recommend_label.label_id).font_color%>;background-color:<%=Label.find(recommend_label.label_id).background_color%>;">
+                      <%=Label.find(recommend_label.label_id).name%>
+                    </span>&nbsp;
                   <% end %>
                   <p>
                     おすすめ度:&nbsp;

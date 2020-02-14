@@ -92,18 +92,30 @@ $(function(){
             $("#contents_recommend_search_main_ather .open").show();
         }
     })
-    // おすすめサイト・動画検索ラベル追加
+    // おすすめサイト・動画検索ラベル
+    current_label = []
+    // 追加
     $("#contents_recommend_search_sub_add button").on("click",function(){
-        label_name = $("#contents_recommend_search_sub_label input").val();
-        $.each(gon.label, function(index, label) {
-            if (label.name == label_name) {
-                $("#contents_recommend_search_sub_label #error_message").hide();
-                add_html = '<div class="chip" style="background-color:#'+label.color+';">'+label_name+'<i class="close material-icons">×</i></div>'
-                $("#contents_recommend_search_main_words dd").append(add_html);
-                ev.preventDefault();
-            }
-        })
-        $("#contents_recommend_search_sub_label #error_message").show();
+        input_name = $("#contents_recommend_search_sub_label input").val();
+        label_number = gon.label_name.indexOf(input_name)
+        if (current_label.indexOf(input_name) > -1) {
+            $("#contents_recommend_search_sub_label #error_message").text("ラベルが既に追加されています!!");
+        } else if (label_number == -1) {
+            $("#contents_recommend_search_sub_label #error_message").text("ラベルが存在しません!!");
+        } else {
+            $("#contents_recommend_search_sub_label #error_message").text("");
+            add_html = '<div class="chip" alt="label_'+input_name+'">'+input_name+'<i class="close material-icons" alt="label_'+input_name+'">×</i></div>';
+            $("#contents_recommend_search_main_words dd").append(add_html);
+            $("[alt=label_"+input_name+"]").css("color", gon.label_font_color[label_number])
+            $("[alt=label_"+input_name+"]").css("background-color", gon.label_background_color[label_number])
+            $("#contents_recommend_search_sub_label input").val("");
+            current_label.push(input_name)
+        }
+    })
+    // 削除
+    $(document).on("click", "i[alt^=label_]", function(){
+        label_number = current_label.indexOf($(this).attr("alt").replace("label_",""))
+        current_label.splice(label_number, 1);
     })
     // おすすめサイト・動画表示方法変更
     $("#contents_recommend_order p").on("click",function(){

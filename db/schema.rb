@@ -34,8 +34,9 @@ ActiveRecord::Schema.define(version: 2020_02_12_033730) do
   end
 
   create_table "labels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", comment: "ラベル", force: :cascade do |t|
-    t.string "name", comment: "ラベル名"
-    t.string "color", comment: "ラベル色"
+    t.string "name", comment: "名前"
+    t.string "font_color", comment: "文字色"
+    t.string "background_color", comment: "背景色"
   end
 
   create_table "question_answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", comment: "問題解答", force: :cascade do |t|
