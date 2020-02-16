@@ -1,0 +1,115 @@
+<div id="contents_recommend_main_list">
+  <table class="uk-table uk-table-justify uk-table-divider">
+    <thead>
+        <tr>
+          <th class="uk-width-small">タイトル</th>
+          <th class="uk-width-small">サムネ</th>
+          <th>概要</th>
+          <th>表示</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% @recommend.each do |recommend| %>
+        <tr>
+          <td><p><%=recommend.title%></p></td>
+          <td><img src="<%=recommend.image_url%>"></td>
+          <td>
+            <p class="description"><%=recommend.description%></p>
+            <% RecommendLabel.where(recommend_id:recommend.id).each do |recommend_label| %>
+              <span class="uk-label" style="color:<%=Label.find(recommend_label.label_id).font_color%>;background-color:<%=Label.find(recommend_label.label_id).background_color%>;">
+                <%=Label.find(recommend_label.label_id).name%>
+              </span>&nbsp;
+            <% end %>
+            <p>
+              おすすめ度:&nbsp;
+              <% recommend.click.times do |i| %>
+                <i class="fas fa-heart" style="color:#FFBEDA;"></i>
+              <% end %>
+            </p>
+          </td>
+          <td><a href="<%=recommend.site_url%>" target="_blank" class="uk-button uk-button-default" id="label_link" alt="<%=recommend.id%>">Open!</a></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div id="contents_recommend_main_block">
+  <ul>
+    <li>
+      <% @recommend.each_with_index do |recommend, index| %>
+        <% if index%4 == 0 %>
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="<%=recommend.image_url%>">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4"><b><%=recommend.title%></b></span>
+              <p><a href="<%=recommend.site_url%>" target="_blank" id="label_link" alt="<%=recommend.id%>">Open!</a></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4"><%=recommend.title%></span>
+              <p><%=recommend.description%></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </li>
+    <li>
+      <% @recommend.each_with_index do |recommend, index| %>
+        <% if index%4 == 1 %>
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="<%=recommend.image_url%>">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4"><b><%=recommend.title%></b></span>
+              <p><a href="<%=recommend.site_url%>" target="_blank" id="label_link" alt="<%=recommend.id%>">Open!</a></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4"><%=recommend.title%></span>
+              <p><%=recommend.description%></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </li>
+    <li>
+      <% @recommend.each_with_index do |recommend, index| %>
+        <% if index%4 == 2 %>
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="<%=recommend.image_url%>">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4"><b><%=recommend.title%></b></i></span>
+              <p><a href="<%=recommend.site_url%>" target="_blank" id="label_link" alt="<%=recommend.id%>">Open!</a></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4"><%=recommend.title%></span>
+              <p><%=recommend.description%></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </li>
+    <li>
+      <% @recommend.each_with_index do |recommend, index| %>
+        <% if index%4 == 3 %>
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="<%=recommend.image_url%>">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4"><b><%=recommend.title%></b></span>
+              <p><a href="<%=recommend.site_url%>" target="_blank" id="label_link" alt="<%=recommend.id%>">Open!</a></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4"><%=recommend.title%></span>
+              <p><%=recommend.description%></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </li>
+  </ul>
+</div>

@@ -87,7 +87,7 @@
             &_add{
                 float: left;
                 padding-top: 20px;
-                button{
+                span{
                     border: 1px solid #9e9e9e;
                     box-sizing: border-box;
                     background-color: #00CC00;
@@ -135,24 +135,33 @@
             }
         }
     }
-    &_order{
+    &_option{
         overflow: auto;
         padding: 0 3% 1%;
-        p{
+        &_order{
             display: inline-block;
-            margin: 0 0 0 5px;
             float: right;
-            padding: 7px;
-            font-size: 20px;
-            border-radius: 20px;
+            p{
+                display: inline-block;
+                margin: 0 0 0 5px;
+                float: right;
+                padding: 7px;
+                font-size: 20px;
+                border-radius: 20px;
+            }
+            .current{
+                border: 1px solid black;
+                background-color: #CFF8BF;
+            }
+            .no-current:hover{
+                cursor: pointer;
+                opacity: 0.5;
+            }
         }
-        .current{
-            border: 1px solid black;
-            background-color: #CFF8BF;
-        }
-        .no-current:hover{
-            cursor: pointer;
-            opacity: 0.5;
+        &_pagenation{
+            height: 50px;
+            nav{width: 400px;}
+            @include pagenation();
         }
     }
     &_main{
@@ -255,4 +264,14 @@
             }
         }
     }
+    &_pagenation{
+        height: 100px;
+        padding-bottom: 50px;
+        @include center();
+        nav{width: 500px;}
+        @include pagenation();
+    }
 }
+
+
+

@@ -1,0 +1,49 @@
+<% if @is_first_page && @is_end_page %>
+  <nav>
+    <span class="current">Page<%=@current_page%></span>
+  </nav>
+<% elsif @is_first_page %>
+  <nav>
+    <span class="current">Page<%=@current_page%></span>
+    <div class="right">
+      <span>></span>
+      <span id="pagenation" value="<%=@current_page+1%>"><%=@current_page+1%></span>
+      <% if @current_page+2 <= @total_page %>
+        <span id="pagenation" value="<%=@current_page+2%>"><%=@current_page+2%></span>
+      <% end %>
+      <span id="pagenation" value="<%=@total_page%>">>></span>
+    </div>
+  </nav>
+<% elsif @is_end_page %>
+  <nav>
+    <span class="current">Page<%=@current_page%></span>
+    <div class="left">
+      <span><</span>
+      <span id="pagenation" value="1"><<</span>
+      <% if @current_page-2 >= 1 %>
+        <span id="pagenation" value="<%=@current_page-2%>"><%=@current_page-2%></span>
+      <% end %>
+      <span id="pagenation" value="<%=@current_page-1%>"><%=@current_page-1%></span>
+    </div>
+  </nav>
+<% else %>
+  <nav>
+    <span class="current">Page<%=@current_page%></span>
+    <div class="left">
+      <span><</span>
+      <span id="pagenation" value="1"><<</span>
+      <% if @current_page-2 >= 1 %>
+        <span id="pagenation" value="<%=@current_page-2%>"><%=@current_page-2%></span>
+      <% end %>
+      <span id="pagenation" value="<%=@current_page-1%>"><%=@current_page-1%></span>
+    </div>
+    <div class="right">
+      <span>></span>
+      <span id="pagenation" value="<%=@current_page+1%>"><%=@current_page+1%></span>
+      <% if @current_page+2 <= @total_page %>
+        <span id="pagenation" value="<%=@current_page+2%>"><%=@current_page+2%></span>
+      <% end %>
+      <span id="pagenation" value="<%=@total_page%>">>></span>
+    </div>
+  </nav>
+<% end %>
