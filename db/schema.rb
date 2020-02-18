@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_12_033730) do
+ActiveRecord::Schema.define(version: 2020_02_17_142434) do
 
   create_table "exam_grades", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", comment: "試験級", force: :cascade do |t|
     t.bigint "exam_id", comment: "試験"
@@ -88,6 +88,16 @@ ActiveRecord::Schema.define(version: 2020_02_12_033730) do
     t.string "image_url", comment: "画像URL"
     t.integer "click", comment: "クリック数"
     t.boolean "delete_flg", comment: "削除フラグ"
+  end
+
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "exam_grades", "exams"

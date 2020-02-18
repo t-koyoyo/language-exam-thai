@@ -481,6 +481,37 @@
       <% end %>
     </div>
     <div id="practice_right">
+      <div id="practice_right_user">
+        <div id="practice_right_user_chart">
+          <img src="https://www.pref.saitama.lg.jp/a0206/kodomo/images/graph03_oresen01rei.png">
+          <% unless user_signed_in? %>
+            <div id="practice_right_user_chart_sign">
+              <div>
+                <p><i class="fas fa-user-lock"></i></p>
+                <p>
+                  <span id="practice_right_user_chart_sign_in">ログイン</span>
+                  &nbsp;/&nbsp;
+                  <span id="practice_right_user_chart_sign_up">新規登録</span>
+                </p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div id="practice_right_user_exam">
+
+        </div>
+
+        <div id="practice_right_user_mock">
+          <% if user_signed_in? %>
+            <p>ユーザー状況：ログイン中</p>
+          <% else %>
+            <p>ユーザー状況：未ログイン</p>
+          <% end %>
+          <%= link_to("ログイン", new_user_session_path) %>
+          <%= link_to("新規登録", new_user_registration_path) %>
+          <%= link_to("ログアウト", destroy_user_session_path, method: :delete) %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

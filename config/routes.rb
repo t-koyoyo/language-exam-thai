@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  devise_for :users
   root to: 'question#index'
   get "/question", to: "question#setting"
   post "/question", to: "question#practice"

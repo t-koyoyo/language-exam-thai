@@ -174,4 +174,94 @@ $(function(){
             console.log("通信失敗")
         })
     })
+
+    // ユーザーログイン
+    $("#practice_right_user_chart_sign_in").on("click", function(){
+        Swal.fire({
+            title: 'ユーザーログイン',
+            html:
+                '<p style="text-align:left;margin:0;">ログインID</p>' +
+                '<input id="swal-input1" class="swal2-input" style="margin:0.5em auto;" type="text">' +
+                '<p style="text-align:left;margin:0;">ログインパスワード</p>' +
+                '<input id="swal-input2" class="swal2-input" style="margin:0.5em auto;">',
+            showCloseButton: true,
+            focusConfirm: false,
+        }).then((result) => {
+            login_id = document.getElementById('swal-input1').value
+            login_password = document.getElementById('swal-input2').value
+            is_logined = true
+            if (result.value && is_logined && (login_id=="管理画面" || login_password=="管理画面")) {
+                Swal.fire({
+                    title: '遷移画面選択',
+                    text: "遷移先画面の選択を行ってください!!",
+                    icon: 'question',
+                    showCloseButton: true,
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: '管理ユーザー画面',
+                    confirmButtonText: '通常ユーザー画面'
+                }).then((result) => {
+                    if (result.value) {
+                        Swal.fire(
+                            '完了',
+                            '通常ユーザー画面にログインしました!',
+                            'success'
+                        )
+                    } else if (result.dismiss == "cancel") {
+                        Swal.fire(
+                            '完了',
+                            '管理ユーザー画面にログインしました!',
+                            'success'
+                        ) 
+                    } else {
+        
+                    }
+                })
+            } else if (result.value && is_logined) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'ログイン成功',
+                    text: 'ユーザーログインに成功しました!',
+                })
+            } else if (result.value) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'ログイン失敗',
+                    text: 'ユーザーログインに失敗しました!',
+                })
+            }
+        })
+    })
+    // ユーザー登録
+    $("#practice_right_user_chart_sign_up").on("click", function(){
+        Swal.fire({
+            title: 'ユーザー登録',
+            html:
+                '<p style="text-align:left;margin:0;">ユーザーID</p>' +
+                '<input id="swal-input1" class="swal2-input" style="margin:0.5em auto;" type="text">' +
+                '<p style="text-align:left;margin:0;">ユーザーパスワード</p>' +
+                '<input id="swal-input2" class="swal2-input" style="margin:0.5em auto;">',
+            showCloseButton: true,
+            focusConfirm: false,
+        }).then((result) => {
+            login_id = document.getElementById('swal-input1').value
+            login_password = document.getElementById('swal-input2').value
+            is_logined = true
+            if (result.value && is_logined) {
+                Swal.fire({
+                    icon: 'success',
+                    title: '登録成功',
+                    text: 'ユーザー登録に成功しました!',
+                })
+            } else if (result.value) {
+                Swal.fire({
+                    icon: 'error',
+                    title: '登録失敗',
+                    text: 'ユーザー登録に失敗しました!',
+                })
+            }
+        })
+    })
 })
+
