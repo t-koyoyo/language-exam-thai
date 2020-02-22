@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -10,9 +10,34 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    if params[:asynchronous].present? then  # 非同期ログイン処理
+      if User.exists?(user_id: params[:user][:user_id])
+        render json: {"status": "already"}
+      else
+        build_resource(sign_up_params)
+        resource.save
+        yield resource if block_given?
+        if resource.persisted?
+          if resource.active_for_authentication?
+            set_flash_message! :notice, :signed_up
+            sign_up(resource_name, resource)
+            render json: {"status": "success"}
+          else
+            set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
+            expire_data_after_sign_in!
+            render json: {"status": "unknown"}
+          end
+        else
+          clean_up_passwords resource
+          set_minimum_password_length
+          render json: {"status": "error"}
+        end
+      end
+    else                                    # 通常ログイン処理
+      super
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -41,9 +66,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:user_id])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params

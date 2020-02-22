@@ -442,6 +442,7 @@
       margin: 10px;
       background-color: honeydew;
       padding-bottom: 20px;
+      position: relative;
       &_title{
         position: relative;
         text-align: center;
@@ -512,6 +513,21 @@
         i{
           font-size: 20px;
           transform: rotate(90deg);
+        }
+      }
+      &_listen{
+        position: absolute;
+        left: 7px;
+        top: 7px;
+        font-size: 20px;
+        cursor: pointer;
+        border: 1px solid #80d400;
+        color: #80d400;
+        padding: 3px;
+        border-radius: 15px;
+        &:hover{
+          background-color: #80d400;;
+          color: white;
         }
       }
     }

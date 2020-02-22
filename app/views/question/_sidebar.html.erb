@@ -1,0 +1,60 @@
+<div id="practice_right_user">
+  <div id="practice_right_user_chart">
+    <img src="https://www.pref.saitama.lg.jp/a0206/kodomo/images/graph03_oresen01rei.png">
+    <% unless user_signed_in? %>
+      <div id="practice_right_user_chart_sign">
+        <div>
+          <p><i class="fas fa-user-lock"></i></p>
+          <p>
+            <span id="practice_right_user_chart_sign_in">ログイン</span>
+            &nbsp;/&nbsp;
+            <span id="practice_right_user_chart_sign_up">新規登録</span>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div id="practice_right_user_button">
+    <span class="uk-button uk-button-default uk-width-1-1">学習成績</span>
+    <% if user_signed_in? %>
+      <span class="uk-button uk-button-default uk-width-1-1"><i class="far fa-dot-circle current_login"></i>ユーザー情報</span>
+      <%= link_to("ログアウト", destroy_user_session_path, method: :delete, class:"uk-button uk-button-default uk-width-1-1") %>
+    <% else %>
+      <span class="uk-button uk-button-default uk-width-1-1"><i class="far fa-dot-circle no_login"></i>ユーザー情報</span>
+    <% end %>
+  </div>
+</div>
+<div id="practice_right_dictionary">
+  <h2 id="practice_right_dictionary_title">辞書</h2>
+  <div id="practice_right_dictionary_input">
+    <input type="text" placeholder="タイ語">
+  </div>
+  <div id="practice_right_dictionary_candidate">
+    <table class="uk-table uk-table-hover uk-table-divider">
+      <tbody>
+          <tr><td>Table Data</td></tr>
+          <tr><td>Table Data</td></tr>
+          <tr><td>Table Data</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p id="practice_right_dictionary_icon"><i class="fas fa-exchange-alt"></i></p>
+  <div id="practice_right_dictionary_input">
+    <input type="text" placeholder="日本語">
+  </div>
+  <div id="practice_right_dictionary_candidate">
+    <table class="uk-table uk-table-hover uk-table-divider">
+      <tbody>
+          <tr><td>Table Data</td></tr>
+          <tr><td>Table Data</td></tr>
+          <tr><td>Table Data</td></tr>
+          <tr><td>Table Data</td></tr>
+          <tr><td>Table Data</td></tr>
+          <tr><td>Table Data</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="practice_right_dictionary_listen" title="音声再生">
+    <i class="fas fa-headphones-alt"></i>
+  </div>
+</div>

@@ -183,52 +183,100 @@ $(function(){
                 '<p style="text-align:left;margin:0;">ログインID</p>' +
                 '<input id="swal-input1" class="swal2-input" style="margin:0.5em auto;" type="text">' +
                 '<p style="text-align:left;margin:0;">ログインパスワード</p>' +
-                '<input id="swal-input2" class="swal2-input" style="margin:0.5em auto;">',
+                '<input type="password" id="swal-input2" class="swal2-input" style="margin:0.5em auto;">',
             showCloseButton: true,
             focusConfirm: false,
         }).then((result) => {
-            login_id = document.getElementById('swal-input1').value
-            login_password = document.getElementById('swal-input2').value
-            is_logined = true
-            if (result.value && is_logined && (login_id=="管理画面" || login_password=="管理画面")) {
-                Swal.fire({
-                    title: '遷移画面選択',
-                    text: "遷移先画面の選択を行ってください!!",
-                    icon: 'question',
-                    showCloseButton: true,
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    cancelButtonText: '管理ユーザー画面',
-                    confirmButtonText: '通常ユーザー画面'
-                }).then((result) => {
-                    if (result.value) {
-                        Swal.fire(
-                            '完了',
-                            '通常ユーザー画面にログインしました!',
-                            'success'
-                        )
-                    } else if (result.dismiss == "cancel") {
-                        Swal.fire(
-                            '完了',
-                            '管理ユーザー画面にログインしました!',
-                            'success'
-                        ) 
-                    } else {
-        
+            user_id = document.getElementById('swal-input1').value
+            user_password = document.getElementById('swal-input2').value
+            user_lank = 0  //[0:通常ユーザ, 1:管理ユーザー]
+            is_modal_countine = result.value ? true : false;
+
+            if (is_modal_countine) {
+                $.ajax({
+                    url: "/users/sign_in",
+                    type: "POST",
+                    data: {
+                        asynchronous: true,
+                        user: {
+                            "user_id" : user_id,
+                            "password" : user_password,
+                            "remember_me": "0",
+                            "commit": "Log in"
+                        }
                     }
                 })
-            } else if (result.value && is_logined) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'ログイン成功',
-                    text: 'ユーザーログインに成功しました!',
+                .done(function(data){
+                    console.log("通信成功")
+                    console.log(data)
+                    switch (data["status"]) {
+                        case "success":
+                            if (data["admin"] == 0) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'ログイン成功',
+                                    text: 'ユーザーログインに成功しました!',
+                                }).then(() => {
+                                    location.reload();
+                                })
+                            } else if (data["admin"] == 1) {
+                                Swal.fire({
+                                    title: '遷移画面選択',
+                                    text: "遷移先画面の選択を行ってください!!",
+                                    icon: 'question',
+                                    showCloseButton: true,
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    cancelButtonText: '管理ユーザー画面',
+                                    confirmButtonText: '通常ユーザー画面'
+                                }).then((result) => {
+                                    if (result.value) {
+                                        Swal.fire(
+                                            '完了',
+                                            '通常ユーザー画面にログインしました!',
+                                            'success'
+                                        ).then(() => {
+                                            location.reload();
+                                        })
+                                    } else if (result.dismiss == "cancel") {
+                                        Swal.fire(
+                                            '完了',
+                                            '管理ユーザー画面にログインしました!',
+                                            'success'
+                                        ).then(() => {
+                                            window.location.href = "http://localhost:3000/";
+                                        })
+                                    }
+                                })
+                            } else {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'ログイン成功',
+                                    text: 'ユーザーログインに成功しました!',
+                                }).then(() => {
+                                    location.reload();
+                                })
+                            }
+                            break;
+                        case "error":
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'ログイン失敗',
+                                text: 'ログインIDが存在しません!',
+                            })
+                            break;
+                        default:
+                            break;
+                    }
                 })
-            } else if (result.value) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'ログイン失敗',
-                    text: 'ユーザーログインに失敗しました!',
+                .fail(function(){
+                    console.log("通信失敗")
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'ログイン失敗',
+                        text: 'ログインパスワードが間違っています!',
+                    })
                 })
             }
         })
@@ -241,24 +289,60 @@ $(function(){
                 '<p style="text-align:left;margin:0;">ユーザーID</p>' +
                 '<input id="swal-input1" class="swal2-input" style="margin:0.5em auto;" type="text">' +
                 '<p style="text-align:left;margin:0;">ユーザーパスワード</p>' +
-                '<input id="swal-input2" class="swal2-input" style="margin:0.5em auto;">',
+                '<input id="swal-input2" class="swal2-input" style="margin:0.5em auto;" type="password">',
             showCloseButton: true,
             focusConfirm: false,
         }).then((result) => {
-            login_id = document.getElementById('swal-input1').value
-            login_password = document.getElementById('swal-input2').value
-            is_logined = true
-            if (result.value && is_logined) {
-                Swal.fire({
-                    icon: 'success',
-                    title: '登録成功',
-                    text: 'ユーザー登録に成功しました!',
+            user_id = document.getElementById('swal-input1').value
+            user_password = document.getElementById('swal-input2').value
+            is_modal_countine = result.value ? true : false;
+
+            if (is_modal_countine) {
+                $.ajax({
+                    url: "/users",
+                    type: "POST",
+                    data: {
+                        asynchronous: true,
+                        user: {
+                            "user_id" : user_id,
+                            "password" : user_password,
+                            "password_confirmation": user_password,
+                        },
+                        commit: "Sign up"
+                    }
                 })
-            } else if (result.value) {
-                Swal.fire({
-                    icon: 'error',
-                    title: '登録失敗',
-                    text: 'ユーザー登録に失敗しました!',
+                .done(function(data){
+                    console.log("通信成功")
+                    switch (data["status"]) {
+                        case "success":
+                            Swal.fire({
+                                icon: 'success',
+                                title: '登録成功',
+                                text: 'ユーザー登録に成功しました!',
+                            }).then(() => {
+                                location.reload();
+                            })
+                            break;
+                        case "already":
+                            Swal.fire({
+                                icon: 'error',
+                                title: '登録失敗',
+                                text: 'ユーザーIDが存在します!',
+                            })
+                            break;
+                        case "error":
+                            Swal.fire({
+                                icon: 'error',
+                                title: '登録失敗',
+                                text: 'ユーザー登録に失敗しました!',
+                            })
+                            break;
+                        default:
+                            break;
+                    }
+                })
+                .fail(function(){
+                    console.log("通信失敗")
                 })
             }
         })

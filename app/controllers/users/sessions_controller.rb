@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
-  # before_action :configure_sign_in_params, only: [:create]
+  before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -9,9 +9,21 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    if params[:asynchronous].present? then  # 非同期ログイン処理
+      if User.exists?(user_id: params[:user][:user_id])
+        self.resource = warden.authenticate!(auth_options)
+        set_flash_message!(:notice, :signed_in)
+        sign_in(resource_name, resource)
+        yield resource if block_given?
+        render json: {"status": "success", "admin": current_user.admin}
+      else
+        render json: {"status": "error"}
+      end
+    else                                   # 通常ログイン処理
+      super
+    end
+  end
 
   # DELETE /resource/sign_out
   # def destroy
@@ -21,7 +33,7 @@ class Users::SessionsController < Devise::SessionsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_in_params
-  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
-  # end
+  def configure_sign_in_params
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:user_id])
+  end
 end
