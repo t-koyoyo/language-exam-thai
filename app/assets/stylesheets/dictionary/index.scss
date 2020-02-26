@@ -1,0 +1,61 @@
+#contents_dictionary{
+  width:85%;
+  background-color: white;
+  margin: 0 auto;
+  overflow: auto;
+  padding: 10px;
+  height: 600px;
+  &_tabs{
+    width:100%;
+    background:#eee;
+    overflow:hidden;
+    position:relative;
+    &:hover &_navigation{opacity:1;}
+    &_header{
+      display:inline-block;
+      width:100%;
+      border-bottom:2px solid #666;
+      span{
+        display:block;
+        float:left;
+        cursor:pointer;
+        color:#666;
+        font:400 15px 'pt sans',sans-serif;
+        background:#ddd;
+        padding:0 15px;
+        line-height:40px !important;
+      }
+      span.active{
+        background:#666;
+        color:#ddd;
+        position:relative;
+        box-shadow:0 0 10px rgba(0,0,0,0.5);
+      }
+    }
+    &_main{
+      position:relative;
+      height: 300px;
+      div{
+        position:absolute;
+        color:#666;
+      }
+    }
+    &_navigation{
+      opacity:0;
+      transition:all .3s linear;
+      -moz-transition:all .3s linear;
+      -webkit-transition:all .3s linear;
+      span{
+        position:absolute;
+        top:50%;
+        cursor:pointer;
+        display:block;
+        height:35px;
+        width:35px;
+        i{font-size: xx-large;}
+      }
+      span.next{right:10px;}
+      span.prev{left:10px;}
+    }
+  }
+}

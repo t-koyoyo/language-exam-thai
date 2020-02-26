@@ -340,7 +340,11 @@
         <%= link_to '過去問題道場', question_path, class:"uk-button uk-button-default" %>
     <% end %>
     <%= link_to '模擬試験', root_path, class:"uk-button uk-button-default" %>
-    <%= link_to '辞書', root_path, class:"uk-button uk-button-default" %>
+    <% if current_menu == "dictionary" %>
+        <%= link_to '辞書', dictionary_path, class:"uk-button uk-button-default current" %>
+    <% else %>
+        <%= link_to '辞書', dictionary_path, class:"uk-button uk-button-default" %>
+    <% end %>
     <%= link_to '成績データベース', root_path, class:"uk-button uk-button-default" %>
     <% if current_menu == "recommend" %>
         <%= link_to 'おすすめサイト・動画', recommend_path, method: :post, class:"uk-button uk-button-default current" %>

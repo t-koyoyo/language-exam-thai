@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   root to: 'question#index'
   get "/question", to: "question#setting"
   post "/question", to: "question#practice"
+  get "/dictionary", to: "dictionary#index"
   post "/recommend", to: "recommend#index"
 
   # 非同期Ajaxリクエスト
