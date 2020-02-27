@@ -1,6 +1,13 @@
 module CommonActions
 
   extend ActiveSupport::Concern
+  include EnumVariable
+
+  # 共通JS変数
+  def js_parameters
+    gon.user = current_user
+    gon.dictionary_languages_select = dictionary_language()
+  end
  
   # ヘッダー部次回試験情報
   def next_exam

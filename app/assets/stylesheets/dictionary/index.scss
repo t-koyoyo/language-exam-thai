@@ -4,7 +4,6 @@
   margin: 0 auto;
   overflow: auto;
   padding: 10px;
-  height: 600px;
   &_tabs{
     width:100%;
     background:#eee;
@@ -12,9 +11,10 @@
     position:relative;
     &:hover &_navigation{opacity:1;}
     &_header{
-      display:inline-block;
+      display:flex;
       width:100%;
       border-bottom:2px solid #666;
+      overflow-y: scroll;
       span{
         display:block;
         float:left;
@@ -34,10 +34,30 @@
     }
     &_main{
       position:relative;
-      height: 300px;
-      div{
-        position:absolute;
+      margin: 15px 40px;
+      height: 470px;
+      div[id^=content]{
+        position: absolute;
         color:#666;
+        width: 100%;
+        .left{
+          width: 65%;
+          &_input, &_output{
+            &_select{
+              margin:0 0 5px;
+              overflow: auto;
+              &_button{
+                float: right;
+                margin-left: 10px;
+                cursor: pointer;
+              }
+            }
+          }
+          &_icon{
+            @include center();
+            transform:rotate(-90deg); 
+          }
+        }
       }
     }
     &_navigation{

@@ -9,31 +9,66 @@ $(function(){
    * デフォルトタブ追加
    * タブ追加ボタン処理
    */
-  tabs_count = 3;  //デフォルトタブ数
+  tabs_count = 3;  // デフォルトタブ数
+  tabs_max = 5;   // マックスタブ数
+  add_languages_select = ""
+  $.each( gon.dictionary_languages_select, function( key, value ) {
+    add_languages_select += '<option value="'+key+'">'+value+'</option>'
+  });
+  add_input_output = 
+      '<div class="left">'+
+        '<div class="left_input">'+
+          '<div class="left_input_select">'+
+            '<div uk-form-custom="target: > * > span:last-child">'+
+              '<select>'+add_languages_select+'</select>'+
+              '<span class="uk-link">'+
+                '<span uk-icon="icon: settings"></span>'+
+                '<span></span>'+
+              '</span>'+
+            '</div>'+
+            '<span class="left_input_select_button uk-icon-button" uk-icon="copy"></span>'+
+            '<span class="left_input_select_button uk-icon-button" uk-icon="play-circle"></span>'+
+            '<span class="left_input_select_button uk-icon-button" uk-icon="microphone"></span>'+
+          '</div>'+
+          '<textarea class="uk-textarea" rows="8" placeholder="入力欄"></textarea>'+
+        '</div>'+
+        '<p class="left_icon"><span uk-icon="icon: chevron-double-left; ratio: 3.5"></span></p>'+
+        '<div class="left_output">'+
+          '<div class="left_output_select">'+
+            '<div uk-form-custom="target: > * > span:last-child">'+
+              '<select>'+add_languages_select+'</select>'+
+              '<span class="uk-link">'+
+                '<span uk-icon="icon: settings"></span>'+
+                '<span></span>'+
+              '</span>'+
+            '</div>'+
+            '<span class="left_input_select_button uk-icon-button" uk-icon="copy"></span>'+
+            '<span class="left_input_select_button uk-icon-button" uk-icon="play-circle"></span>'+
+          '</div>'+
+          '<textarea class="uk-textarea" rows="8" placeholder="出力欄(入力不可)" disabled></textarea>'+
+        '</div>'+
+      '</div>'
+
+  // デフォルト
   for (var count=0; count<tabs_count; count++) {
-    $("#contents_dictionary_tabs_header #tab_plus").before("<span id='content"+count+"'>Button"+count+"</span>");
-    $("#contents_dictionary_tabs_main").append("<div id='content"+count+"'>Tab"+count+"の内容</div>")
+    $("#contents_dictionary_tabs_header #tab_plus").before("<span id='content"+count+"'>Tab"+count+"</span>");
+    $("#contents_dictionary_tabs_main").append("<div id='content"+count+"'>"+add_input_output+"</div>")
   }
+  // タブ追加
   $("#contents_dictionary_tabs_header #tab_plus").on("click", function(){
-    $("#contents_dictionary_tabs_header #tab_plus").before("<span id='content"+tabs_count+"'>Button"+tabs_count+"</span>");
-    $("#contents_dictionary_tabs_main").append("<div id='content"+tabs_count+"'>Tab"+tabs_count+"の内容</div>")
-    // 要素位置修正
-    $('#contents_dictionary_tabs_main>div').each(function () {
-      var activeid = $('.active').attr('id');
-      if ($(this).attr('id') == activeid) {
-          $(this).addClass('activetab');
-      }
-      var currentwidth = $('#contents_dictionary_tabs').width();
-      var currentindex = $(this).index();
-      var currentposition = currentindex * currentwidth;
-      $(this).css({
-          'left': currentposition,
-              'width': currentwidth - 40,
-              'padding': '10px 20px'
-      });
-      $(this).attr('data-position', currentposition);
-    });
-    tabs_count += 1;
+    if (tabs_count==tabs_max && gon.user==null) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'タブの追加上限に達しました',
+        text: 'ユーザーログインする事で、無制限に開放可能！',
+      })
+    } else {
+      before_css = parseInt($("#contents_dictionary_tabs_main [id^=content]:last-of-type").css('left'));
+      currentwidth = $('#contents_dictionary_tabs').width();
+      $("#contents_dictionary_tabs_header #tab_plus").before("<span id='content"+tabs_count+"'>Tab"+tabs_count+"</span>");
+      $("#contents_dictionary_tabs_main").append('<div id="content'+tabs_count+'" data-position="'+tabs_count*currentwidth+'" style="left: '+(before_css+currentwidth)+'px";>'+add_input_output+'</div>')
+      tabs_count += 1;
+    }
   })
   /**
    * タブ処理
@@ -68,12 +103,8 @@ $(function(){
       var currentwidth = $('#contents_dictionary_tabs').width();
       var currentindex = $(this).index();
       var currentposition = currentindex * currentwidth;
-      $(this).css({
-          'left': currentposition,
-              'width': currentwidth - 40,
-              'padding': '10px 20px'
-      });
       $(this).attr('data-position', currentposition);
+      $(this).attr('style', 'left: '+currentposition+'px;');
   });
   $(document).on("click", "#contents_dictionary_tabs_header>span[id^=content]", function(){
       $('#contents_dictionary_tabs_header>span').removeClass('active');

@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   
   include CommonActions
-  before_action :next_exam
-  
+  before_action :next_exam, :js_parameters
+
   # 非同期処理
   def asynchronous
     @response_data = {}
