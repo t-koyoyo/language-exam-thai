@@ -53,9 +53,13 @@
               }
             }
           }
+          &_output textarea:disabled {
+            color: inherit ;
+            cursor: not-allowed;
+          }
           &_icon{
             @include center();
-            transform:rotate(-90deg); 
+            span{transform:rotate(-90deg); }
           }
         }
       }

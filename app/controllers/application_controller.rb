@@ -9,19 +9,12 @@ class ApplicationController < ActionController::Base
     case params[:type]
     when "recommend_click" # クリック数追加
       Recommend.find(params[:recommend_id]).increment!(:click, 1)
-    when "dictionary_thai" # 辞書検索[タイ語→日本語]
+    when "dictionary"      # 辞書検索[入力言語→出力言語]
       @response_data = []
-      @aplicable_data = Dictionary.where("thai_text LIKE ?", "%"+params[:input]+"%")
-      @aplicable_data.each do |data| # タイ語訳から入力文字と同一語訳を含むレコードを抽出
-        thai_text = data.thai_text.split(",")
-        @response_data.push(data) if thai_text.include?(params[:input])
-      end
-    when "dictionary_japanese" # 辞書検索[日本語→タイ語]
-      @response_data = []
-      @aplicable_data = Dictionary.where("japanese_text LIKE ?", "%"+params[:input]+"%")
-      @aplicable_data.each do |data| # 日本語訳から入力文字と同一語訳を含むレコードを抽出
-        japanese_text = data.japanese_text.split(",")
-        @response_data.push(data) if japanese_text.include?(params[:input])
+      @aplicable_data = Dictionary.where(params[:input_language]+"_text LIKE ?", "%"+params[:input_text]+"%")
+      @aplicable_data.each do |data| # 入力語訳から入力文字と同一語訳を含むレコードを抽出
+        text = data[params[:input_language]+"_text"].split(",")
+        @response_data.push(data) if text.include?(params[:input_text])
       end
     else
     end
