@@ -4,6 +4,7 @@
  * 
  */
 $(function(){
+
   /**
    * タブ処理
    * 入力エリアボタン処理
@@ -141,6 +142,14 @@ $(function(){
   } else {
     tabs_max = Infinity;   // マックスタブ数
   }
+  gon.dictionary_record.sort(function(a, b) {  // 辞書レコード並び替え
+    if (a.japanese_text < b.japanese_text) {
+      return 1;
+    } else {
+      return -1;
+    }
+  })
+  console.log(gon.dictionary_record)
   // タブ内容
   function tab_content(count){
     add_input_select = ""    // 入力言語セレクトボックス内容
@@ -157,6 +166,27 @@ $(function(){
         add_output_select += '<option value="'+key+'">'+value+'</option>'
       }
     });
+    add_list_word_sentence = ""
+    $.each( gon.dictionary_record, function( key, record ) {
+      console.log(record.japanese_text)
+      if (record.japanese_voice) {
+        button_play_download = 
+          '<span class="uk-icon-button" uk-icon="play-circle" alt="'+record.japanese_voice+'"></span>'+
+          '<a href="'+record.japanese_voice.replace("uc?export=view&", "uc?export=download&")+'" class="uk-icon-button" uk-icon="download"></a>'
+      } else {
+        button_play_download = 
+          '<span class="uk-icon-button" uk-icon="ban"></span>'+
+          '<a class="uk-icon-button" uk-icon="ban"></a>'
+      }
+      add_list_word_sentence += 
+        '<tr>'+
+          '<td>'+record.japanese_text.replace(/,.*/, "")+'</td>'+
+          '<td class="uk-text-nowrap">'+
+          '<span class="uk-icon-button" uk-icon="arrow-left" value="'+record.japanese_text.replace(/,.*/, "")+'" alt="'+count+'"></span>'+
+          button_play_download+
+        '</td>'+
+      '</tr>'
+    })
     add_input_output = 
         '<div class="left">'+
           '<div class="left_input">'+
@@ -188,6 +218,39 @@ $(function(){
               '<span class="left_output_select_button uk-icon-button" uk-icon="play-circle" alt="'+count+'"></span>'+
             '</div>'+
             '<textarea class="uk-textarea" rows="8" placeholder="出力欄(入力不可)" alt="'+count+'" disabled></textarea>'+
+          '</div>'+
+        '</div>'+
+        '<div class="right">'+
+            '<div class="right_header">'+
+              '<table class="uk-table uk-table-divider uk-table-hover uk-table-small uk-table-middle">'+
+                '<thead><tr>'+
+                  '<th>'+
+                    '<div class="uk-inline">'+
+                      '<span class="uk-form-icon" uk-icon="icon: search"></span>'+
+                      '<input class="uk-input uk-form-small" type="text" placeholder="Search...">'+
+                    '</div>'+
+                  '</th>'+
+                  '<th>'+
+                    '<div uk-form-custom="target: > * > span:last-child">'+
+                      '<select>'+
+                        '<option>単語・文章帳</option>'+
+                        '<option>単語帳</option>'+
+                        '<option>文章帳</option>'+
+                      '</select>'+
+                      '<span class="uk-link">'+
+                        '<span uk-icon="icon: file-text"></span>'+
+                        '<span></span>'+
+                      '</span>'+
+                    '</div>'+
+                  '</th>'+
+                '</tr></thead>'+
+              '</table>'+
+            '</div>'+
+            '<div class="right_main">'+
+              '<table class="uk-table uk-table-divider uk-table-hover uk-table-small">'+
+                '<tbody>'+add_list_word_sentence+'</tbody>'+
+              '</table>'+
+            '</div>'+
           '</div>'+
         '</div>'
     return add_input_output
@@ -305,4 +368,24 @@ $(function(){
           $.FindContainer();
       }
   });
+
+  /**
+   * タブ単語・文章帳
+   * 音声再生
+   */
+  $(document).on("click", "#contents_dictionary_tabs_main .right_main span[uk-icon=play-circle]", function(){
+    $(this).attr("uk-icon", "ban")
+    dictionary_word_sentence_audio = new Audio();
+    dictionary_word_sentence_audio.src = $(this).attr("alt");
+    dictionary_word_sentence_audio.play();
+    dictionary_word_sentence_audio.onended = () => {
+      $(this).attr("uk-icon", "play-circle");
+    };
+  })
+  $(document).on("click", "#contents_dictionary_tabs_main .right_main span[uk-icon=arrow-left]", function(){
+    tab_count = $(this).attr("alt");
+    value = $(this).attr("value");
+    $("#contents_dictionary_tabs_main .left_input textarea[alt="+tab_count+"]").val(value);
+    translation($("#contents_dictionary_tabs_main .left_input textarea[alt="+tab_count+"]"));
+  })
 })

@@ -7,6 +7,7 @@ module CommonActions
   def js_parameters
     gon.user = current_user
     gon.dictionary_languages_select = dictionary_language()
+    gon.dictionary_record = Dictionary.all
   end
  
   # ヘッダー部次回試験情報
