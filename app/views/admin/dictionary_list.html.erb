@@ -1,0 +1,73 @@
+<div id="admin">
+  <%= render partial: "header" %>
+  <div id="admin_contents">
+    <%= render partial: "sidebar", locals: {current_sidebar:"dictionary_list"} %>
+    <div id="admin_contents_main">
+      <div class="twelve wide stretched column">
+        <div class="ui segment">
+          <div class="field" placeholder="Last Name">
+            <div class="ui pointing below red basic label big">Dictionary</div>
+          </div>
+          <div id="admin_contents_main_records">
+            <table class="ui compact celled definition table">
+              <thead class="full-width">
+                <tr>
+                  <th></th>
+                  <% @dictionary_columns.each do |column| %>
+                    <th><%=column%></th>
+                  <% end %>
+                </tr>
+              </thead>
+              <tbody>
+                <% @dictionary_records.each do |record| %>
+                  <tr>
+                    <td class="collapsing">
+                      <div class="ui fitted slider checkbox">
+                        <input type="checkbox"> <label></label>
+                      </div>
+                    </td>
+                    <% @dictionary_columns.each do |column| %>
+                      <td><%=record[column]%></td>
+                    <% end %>
+                  </tr>
+                <% end %>
+              </tbody>
+              <tfoot class="full-width">
+                <tr>
+                  <th></th>
+                  <th colspan="<%=@dictionary_columns.size%>">
+                    <div class="ui floated pagination menu">
+                      <a class="icon item">
+                        <i class="left chevron icon"></i>
+                      </a>
+                      <a class="active item">1</a>
+                      <a class="item">2</a>
+                      <a class="item">3</a>
+                      <a class="item">4</a>
+                      <a class="icon item">
+                        <i class="right chevron icon"></i>
+                      </a>
+                    </div>
+                  </th>
+                </tr>
+              </tfoot>
+              <tfoot class="full-width">
+                <tr>
+                  <th></th>
+                  <th colspan="<%=@dictionary_columns.size%>">
+                    <div class="ui floated small primary labeled icon button negative">
+                      <i class="trash alternate icon"></i>削除
+                    </div>
+                    <div class="ui floated small primary labeled icon button">
+                      <i class="edit icon"></i>編集
+                    </div>
+                  </th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

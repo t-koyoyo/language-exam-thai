@@ -1,0 +1,17 @@
+<div id="admin">
+  <%= render partial: "header" %>
+  <div id="admin_contents">
+    <%= render partial: "sidebar", locals: {current_sidebar:"analytics_list"} %>
+    <div id="admin_contents_main">
+      <div class="twelve wide stretched column">
+        <div class="ui segment">
+          <iframe width="860" height="615" src="https://analytics.google.com/analytics/web/?hl=ja#/report-home/a149914411w216853097p207127553" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

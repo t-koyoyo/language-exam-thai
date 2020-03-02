@@ -223,7 +223,7 @@ $(function(){
                                         '管理ユーザー画面にログインしました!',
                                         'success'
                                     ).then(() => {
-                                        window.location.href = "http://localhost:3000/";
+                                        window.location.href = "http://localhost:3000/admin";
                                     })
                                 }
                             })

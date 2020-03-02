@@ -18,6 +18,9 @@
     <span class="uk-button uk-button-default uk-width-1-1">学習成績</span>
     <% if user_signed_in? %>
       <span class="uk-button uk-button-default uk-width-1-1"><i class="far fa-dot-circle current_login"></i>ユーザー情報</span>
+      <% if current_user.admin %>
+        <%= link_to("管理画面", admin_path, class:"uk-button uk-button-default uk-width-1-1") %>
+      <% end %>
       <%= link_to("ログアウト", destroy_user_session_path, method: :delete, class:"uk-button uk-button-default uk-width-1-1") %>
     <% else %>
       <span class="uk-button uk-button-default uk-width-1-1"><i class="far fa-dot-circle no_login"></i>ユーザー情報</span>
